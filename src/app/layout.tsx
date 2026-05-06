@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     url: "https://thomasrohan.com",
     title: "Rohan Thomas — Trading screens at $3T scale",
     description:
-      "Trading screens at $3T scale. Prediction markets after hours.",
+      "Trading screens at $3T scale. Prediction markets after hours. Full-stack engineer at Charles Schwab — portfolio tools, AI agents, arbitrage scanners.",
     siteName: "Rohan Thomas",
   },
   twitter: {
     card: "summary_large_image",
     title: "Rohan Thomas — Trading screens at $3T scale",
     description:
-      "Trading screens at $3T scale. Prediction markets after hours.",
+      "Trading screens at $3T scale. Prediction markets after hours. Full-stack engineer at Charles Schwab — portfolio tools, AI agents, arbitrage scanners.",
   },
   robots: {
     index: true,
