@@ -62,17 +62,17 @@ export function Hero() {
         <h1 className="display text-[14vw] sm:text-[12vw] lg:text-[11rem]">
           <span className="block overflow-hidden">
             <span data-hero-line className="block">
-              Full-stack
+              Trading screens
             </span>
           </span>
           <span className="block overflow-hidden">
             <span data-hero-line className="block">
-              <span className="text-accent">engineer.</span>
+              moving <span className="text-accent">$3T+</span>.
             </span>
           </span>
           <span className="block overflow-hidden">
             <span data-hero-line className="block">
-              Agents & UIs.
+              Agents after hours.
             </span>
           </span>
         </h1>

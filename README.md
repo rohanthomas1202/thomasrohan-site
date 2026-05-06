@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# thomasrohan.com
 
-## Getting Started
+Personal site for [Rohan Thomas](https://github.com/rohanthomas1202) — full-stack engineer at Charles Schwab, building AI agents and trading tools after hours.
 
-First, run the development server:
+→ Live at **[thomasrohan.com](https://thomasrohan.com)**
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) — App Router, Turbopack
+- [React 19](https://react.dev), TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [GSAP](https://gsap.com) + ScrollTrigger — scroll choreography
+- [Motion](https://motion.dev) — component micro-interactions
+- [Lenis](https://lenis.darkroom.engineering) — smooth scroll
+- [Vercel Analytics](https://vercel.com/docs/analytics)
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx          # root metadata, fonts, analytics
+│   ├── page.tsx            # composes the home sections
+│   ├── globals.css         # Tailwind theme + accent token
+│   ├── opengraph-image.tsx # dynamic OG card
+│   └── icon.tsx            # favicon
+├── components/
+│   ├── hero.tsx
+│   ├── nav.tsx
+│   ├── footer.tsx
+│   ├── lenis-provider.tsx
+│   └── sections/
+│       ├── manifesto.tsx
+│       ├── work-grid.tsx
+│       └── marquee.tsx
+└── lib/
+    └── utils.ts
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The accent color (`--accent: #c5ff00`) lives in `src/app/globals.css`.
