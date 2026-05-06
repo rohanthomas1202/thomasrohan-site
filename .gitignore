@@ -35,3 +35,6 @@ next-env.d.ts
 
 # personal artifacts (keep out of public repo)
 Rohan_Thomas_Resume*.pdf
+
+# playwright mcp working data
+.playwright-mcp/
