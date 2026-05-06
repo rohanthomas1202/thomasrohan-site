@@ -147,7 +147,7 @@ export function WorkGrid() {
                 Live demo →
               </a>
               <a
-                href="https://github.com/rohanthomas1202/EdgeTerminal"
+                href="https://github.com/rohanthomas1202/truthlayer"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent"
