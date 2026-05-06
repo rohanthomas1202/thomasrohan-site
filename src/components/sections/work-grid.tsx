@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 type Project = {
@@ -13,16 +14,6 @@ type Project = {
 };
 
 const projects: Project[] = [
-  {
-    title: "EdgeTerminal",
-    blurb:
-      "Real-time cross-market arbitrage scanner pairing Polymarket and Kalshi via FAISS + Claude matching, fee-adjusted spreads, settlement-verified P&L.",
-    stack: "Python · FastAPI · Next.js · Claude",
-    year: "2026",
-    tag: "Quant",
-    href: "https://github.com/rohanthomas1202/EdgeTerminal",
-    live: "https://frontend-indol-five-84.vercel.app",
-  },
   {
     title: "AgentForge Healthcare",
     blurb:
@@ -71,6 +62,8 @@ const projects: Project[] = [
   },
 ];
 
+const featuredStack = ["Python", "FastAPI", "Next.js", "FAISS", "Claude"];
+
 export function WorkGrid() {
   return (
     <section
@@ -78,22 +71,129 @@ export function WorkGrid() {
       className="border-t border-border px-6 py-32 sm:py-40"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 flex items-end justify-between">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              02 / Selected Work
+        <div className="mb-16">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">
+            02 / Selected Work
+          </p>
+          <h2 className="display mt-3 text-5xl sm:text-7xl">
+            Selected
+            <br />
+            <span className="text-accent">work.</span>
+          </h2>
+        </div>
+
+        {/* Featured */}
+        <article className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="flex flex-col lg:col-span-5">
+            <p className="font-mono text-xs uppercase tracking-widest text-accent">
+              ★ Featured
             </p>
-            <h2 className="display mt-3 text-5xl sm:text-7xl">
-              Selected
-              <br />
-              <span className="text-accent">work.</span>
-            </h2>
+            <h3 className="display mt-4 text-5xl sm:text-6xl">EdgeTerminal</h3>
+            <p className="mt-3 text-lg text-muted">
+              Cross-market arbitrage scanner — Polymarket × Kalshi.
+            </p>
+
+            <div className="mt-10 space-y-6 text-sm leading-relaxed">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Problem
+                </p>
+                <p className="mt-2">
+                  Polymarket and Kalshi list the same events but rarely price
+                  them the same. The spread closes in minutes, and watching
+                  hundreds of markets at once isn&apos;t a human job.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Approach
+                </p>
+                <p className="mt-2">
+                  A scanner that pairs contracts across both exchanges using
+                  FAISS for cheap recall, then a Claude pass for semantic
+                  confirmation. Spreads are fee-adjusted, ranked, and tracked
+                  through to settlement.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Result
+                </p>
+                <p className="mt-2">
+                  Live, running 24/7. 481 opportunities detected; scoreboard
+                  tracks post-fee, post-resolution P&amp;L — not paper gains.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {featuredStack.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-border px-3 py-1 font-mono text-[11px] text-muted"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="https://frontend-indol-five-84.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:scale-105"
+              >
+                Live demo →
+              </a>
+              <a
+                href="https://github.com/rohanthomas1202/EdgeTerminal"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
+
+          <a
+            href="https://frontend-indol-five-84.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            className="group lg:col-span-7"
+          >
+            <div className="relative aspect-[2/1] overflow-hidden rounded-xl border border-border bg-background">
+              <Image
+                src="/work/edgeterminal.png"
+                alt="EdgeTerminal performance dashboard — 481 detected arbs, 53.3% win rate, calibration buckets, resolved P&L table"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/30 via-transparent to-transparent"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5"
+              />
+            </div>
+          </a>
+        </article>
+
+        {/* More work */}
+        <div className="mt-32 mb-12 flex items-end justify-between">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">
+            More work
+          </p>
           <a
             href="https://github.com/rohanthomas1202"
             target="_blank"
             rel="noreferrer"
-            className="hidden text-sm text-muted transition-colors hover:text-foreground sm:block"
+            className="text-sm text-muted transition-colors hover:text-foreground"
           >
             View all on GitHub →
           </a>
