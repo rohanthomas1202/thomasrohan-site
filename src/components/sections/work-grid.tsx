@@ -88,7 +88,7 @@ export function WorkGrid() {
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
               ★ Featured
             </p>
-            <h3 className="display mt-4 text-5xl sm:text-6xl">EdgeTerminal</h3>
+            <h3 className="display mt-4 text-5xl sm:text-6xl">TruthLayer</h3>
             <p className="mt-3 text-lg text-muted">
               Cross-market arbitrage scanner — Polymarket × Kalshi.
             </p>
@@ -166,7 +166,7 @@ export function WorkGrid() {
             <div className="relative aspect-[2/1] overflow-hidden rounded-xl border border-border bg-background">
               <Image
                 src="/work/edgeterminal.png"
-                alt="EdgeTerminal performance dashboard — 481 detected arbs, 53.3% win rate, calibration buckets, resolved P&L table"
+                alt="TruthLayer performance dashboard — 481 detected arbs, 53.3% win rate, calibration buckets, resolved P&L table"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 60vw"
