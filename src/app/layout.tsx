@@ -18,15 +18,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasrohan.com"),
   title: {
-    default: "Rohan Thomas — Full-Stack Engineer",
+    default: "Rohan Thomas — Trading screens at $3T scale",
     template: "%s — Rohan Thomas",
   },
   description:
-    "Full-stack engineer shipping trading interfaces moving $3T+ at Charles Schwab. After hours: AI agents, prediction-market scanners, and product UIs.",
+    "Trading screens at $3T scale. Prediction markets after hours. Full-stack engineer at Charles Schwab building portfolio tools, AI agents, and arbitrage scanners.",
   keywords: [
     "Rohan Thomas",
     "full-stack engineer",
     "Charles Schwab",
+    "prediction markets",
     "AI agents",
     "LangGraph",
     "Next.js",
@@ -36,16 +37,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://thomasrohan.com",
-    title: "Rohan Thomas — Full-Stack Engineer",
+    title: "Rohan Thomas — Trading screens at $3T scale",
     description:
-      "Trading interfaces moving $3T+ by day. AI agents and arbitrage scanners after hours.",
+      "Trading screens at $3T scale. Prediction markets after hours.",
     siteName: "Rohan Thomas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rohan Thomas — Full-Stack Engineer",
+    title: "Rohan Thomas — Trading screens at $3T scale",
     description:
-      "Trading interfaces moving $3T+ by day. AI agents and arbitrage scanners after hours.",
+      "Trading screens at $3T scale. Prediction markets after hours.",
   },
   robots: {
     index: true,

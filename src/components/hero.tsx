@@ -70,12 +70,17 @@ export function Hero() {
           </span>
           <span className="block overflow-hidden">
             <span data-hero-line className="block">
-              moving <span className="text-accent">$3T+</span>.
+              at <span className="text-accent">$3T</span> scale.
             </span>
           </span>
           <span className="block overflow-hidden">
             <span data-hero-line className="block">
-              Agents after hours.
+              Prediction markets
+            </span>
+          </span>
+          <span className="block overflow-hidden">
+            <span data-hero-line className="block">
+              after hours.
             </span>
           </span>
         </h1>

@@ -90,8 +90,9 @@ export default function OG() {
                 display: "flex",
               }}
             >
-              Trading screens moving{" "}
-              <span style={{ color: "#c5ff00", marginLeft: 12 }}>$3T+</span>.
+              Trading screens at{" "}
+              <span style={{ color: "#c5ff00", margin: "0 12px" }}>$3T</span>{" "}
+              scale.
             </div>
             <div
               style={{
@@ -100,7 +101,7 @@ export default function OG() {
                 display: "flex",
               }}
             >
-              Agents after hours.
+              Prediction markets after hours.
             </div>
           </div>
 
