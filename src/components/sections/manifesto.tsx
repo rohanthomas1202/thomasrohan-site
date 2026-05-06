@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -10,8 +11,10 @@ if (typeof window !== "undefined") {
 
 export function Manifesto() {
   const root = useRef<HTMLElement>(null);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reduced) return;
     const ctx = gsap.context(() => {
       const words = gsap.utils.toArray<HTMLElement>("[data-word]");
       gsap.fromTo(
@@ -31,7 +34,7 @@ export function Manifesto() {
       );
     }, root);
     return () => ctx.revert();
-  }, []);
+  }, [reduced]);
 
   const text =
     "I build software that ships. Trading interfaces moving $3T+ in assets by day; autonomous agents, arbitrage scanners, and plugin platforms by night. The seam between systems and craft is where the work gets interesting.";

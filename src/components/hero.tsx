@@ -2,11 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reduced) return;
     const ctx = gsap.context(() => {
       gsap.from("[data-hero-line]", {
         yPercent: 110,
@@ -24,7 +27,7 @@ export function Hero() {
       });
     }, root);
     return () => ctx.revert();
-  }, []);
+  }, [reduced]);
 
   return (
     <section

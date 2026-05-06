@@ -6,7 +6,7 @@ export function Footer() {
     >
       <div className="mx-auto max-w-7xl">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
-          03 / Contact
+          04 / Contact
         </p>
         <h2 className="display mt-3 text-6xl sm:text-8xl lg:text-[10rem]">
           Let&apos;s

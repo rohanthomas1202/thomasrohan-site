@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 const stack = [
   "TypeScript",
@@ -24,6 +25,8 @@ const stack = [
 ];
 
 export function Marquee() {
+  const reduced = usePrefersReducedMotion();
+
   return (
     <section
       id="stack"
@@ -31,8 +34,12 @@ export function Marquee() {
     >
       <motion.div
         className="flex gap-12 whitespace-nowrap"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+        animate={reduced ? undefined : { x: ["0%", "-50%"] }}
+        transition={
+          reduced
+            ? undefined
+            : { duration: 32, repeat: Infinity, ease: "linear" }
+        }
       >
         {[...stack, ...stack].map((s, i) => (
           <span
