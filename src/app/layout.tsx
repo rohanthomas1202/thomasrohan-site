@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
 import { Nav } from "@/components/nav";
+import { Cursor } from "@/components/chrome/cursor";
+import { Intro } from "@/components/chrome/intro";
 
 const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["opsz"], display: "swap" });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
@@ -59,7 +61,9 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-background text-foreground">
+        <Intro />
         <SmoothScrollProvider />
+        <Cursor />
         <Nav />
         {children}
         <Analytics />
