@@ -38,3 +38,6 @@ Rohan_Thomas_Resume*.pdf
 
 # playwright mcp working data
 .playwright-mcp/
+
+# Brainstorm visual companion
+.superpowers/
