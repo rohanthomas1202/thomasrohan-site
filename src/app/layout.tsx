@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { LenisProvider } from "@/components/lenis-provider";
+import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
 import { Nav } from "@/components/nav";
 
 const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["opsz"], display: "swap" });
@@ -59,7 +59,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-background text-foreground">
-        <LenisProvider />
+        <SmoothScrollProvider />
         <Nav />
         {children}
         <Analytics />
