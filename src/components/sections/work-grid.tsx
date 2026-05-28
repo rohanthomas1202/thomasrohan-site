@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { projects, featuredStack, type Project } from "@/content/projects";
+import { projects, featuredStack } from "@/content/projects";
 
 export function WorkGrid() {
   return (

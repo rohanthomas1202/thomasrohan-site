@@ -1,4 +1,4 @@
-import { roles, type Role } from "@/content/experience";
+import { roles } from "@/content/experience";
 
 export function Experience() {
   return (
