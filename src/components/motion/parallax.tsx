@@ -17,9 +17,12 @@ export function Parallax({ depth = 20, className, children, as: Tag = "div" }: P
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reduced) return;
     const el = ref.current;
     if (!el) return;
+    if (reduced) {
+      el.style.transform = "";
+      return;
+    }
     pointerStore.start();
     const off = pointerStore.subscribe(({ nx, ny, scrollY }) => {
       const { x, y } = depthTransform(depth, nx, ny, scrollY);
@@ -36,7 +39,7 @@ export function Parallax({ depth = 20, className, children, as: Tag = "div" }: P
   >;
 
   return (
-    <El ref={ref} className={className} style={{ willChange: "transform" }}>
+    <El ref={ref} className={className} style={{ willChange: reduced ? undefined : "transform" }}>
       {children}
     </El>
   );

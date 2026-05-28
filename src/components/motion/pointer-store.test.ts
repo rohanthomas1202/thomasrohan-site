@@ -1,7 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { pointerStore } from "./pointer-store";
 
 describe("pointerStore", () => {
+  beforeEach(() => pointerStore.set({ nx: 0, ny: 0, scrollY: 0 }));
   it("starts centered with zero scroll", () => {
     const s = pointerStore.get();
     expect(s.nx).toBe(0); expect(s.ny).toBe(0); expect(s.scrollY).toBe(0);
