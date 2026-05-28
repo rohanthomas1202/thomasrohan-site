@@ -3,7 +3,8 @@ import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
-import { Nav } from "@/components/nav";
+import { Nav } from "@/components/chrome/nav";
+import { ScrollProgress } from "@/components/chrome/scroll-progress";
 import { Cursor } from "@/components/chrome/cursor";
 import { Intro } from "@/components/chrome/intro";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-background text-foreground">
+        <ScrollProgress />
         <Intro />
         <SmoothScrollProvider />
         <Cursor />
