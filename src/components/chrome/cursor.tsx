@@ -99,7 +99,7 @@ export function Cursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="pointer-events-none fixed z-[9999] rounded-full"
+        className="pointer-events-none fixed z-[9999] rounded-full mix-blend-difference"
         style={{
           width: 5,
           height: 5,

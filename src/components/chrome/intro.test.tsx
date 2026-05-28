@@ -27,4 +27,15 @@ describe("Intro (reduced motion — skip path)", () => {
     // No curtain element rendered
     expect(container.firstChild).toBeNull();
   });
+
+  it("dispatches the intro:done event on the skip path", async () => {
+    const spy = vi.spyOn(window, "dispatchEvent");
+    render(<Intro />);
+
+    await waitFor(() => {
+      const fired = spy.mock.calls.some(([e]) => (e as Event).type === "intro:done");
+      expect(fired).toBe(true);
+    });
+    spy.mockRestore();
+  });
 });
