@@ -161,7 +161,9 @@ export default function HeroFx() {
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     }
-    canvas.addEventListener("pointermove", onPointerMove);
+    // Listen on window, not the canvas — the canvas is pointer-events:none,
+    // so it would never receive pointer events itself.
+    window.addEventListener("pointermove", onPointerMove);
 
     // --- init ---
     applyDpr();
@@ -172,7 +174,7 @@ export default function HeroFx() {
       ro?.disconnect();
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
-      canvas.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointermove", onPointerMove);
       if (!ro) {
         window.removeEventListener("resize", applyDpr);
       }
