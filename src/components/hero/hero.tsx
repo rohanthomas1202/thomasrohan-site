@@ -103,7 +103,6 @@ export function Hero() {
       <Parallax
         depth={34}
         as="div"
-        aria-hidden
         className="pointer-events-none absolute right-[-12%] top-1/2 -z-10 -translate-y-1/2 opacity-20 min-[820px]:right-[2%] min-[820px]:opacity-100"
       >
         <div className="relative">
