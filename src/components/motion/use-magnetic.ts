@@ -7,6 +7,8 @@ export function useMagnetic(ref: RefObject<HTMLElement | null>, strength = 0.4) 
   const reduced = usePrefersReducedMotion();
   useEffect(() => {
     const el = ref.current;
+    // Clear any stale offset (e.g. if reduced-motion/coarse becomes true at runtime).
+    if (el) el.style.transform = "";
     if (!el || reduced || window.matchMedia("(pointer: coarse)").matches) return;
     el.style.transition = "transform 0.25s var(--ease-expo)";
     const move = (e: PointerEvent) => {

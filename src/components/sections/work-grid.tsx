@@ -179,6 +179,7 @@ export function WorkGrid() {
             href="https://frontend-indol-five-84.vercel.app"
             target="_blank"
             rel="noreferrer"
+            data-hover
             className="group lg:col-span-7"
             style={{ transformStyle: "preserve-3d" }}
           >
