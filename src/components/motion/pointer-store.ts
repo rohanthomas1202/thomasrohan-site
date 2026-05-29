@@ -4,7 +4,7 @@ type Sub = (s: State) => void;
 const state: State = { nx: 0, ny: 0, scrollY: 0 };
 const subs = new Set<Sub>();
 let started = false;
-let target = { nx: 0, ny: 0 };
+const target = { nx: 0, ny: 0 };
 
 export const pointerStore = {
   get: () => state,

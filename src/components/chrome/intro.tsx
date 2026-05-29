@@ -21,6 +21,8 @@ export function Intro() {
   // Decide on mount whether to play
   useEffect(() => {
     const shouldPlay = shouldPlayIntro(sessionStorage, reduced);
+    // Reading client-only state (sessionStorage) on mount is a valid effect use here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPlay(shouldPlay);
     if (!shouldPlay) {
       dispatchDone();

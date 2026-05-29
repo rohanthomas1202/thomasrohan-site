@@ -34,7 +34,10 @@ export function Hero() {
   useMagnetic(secondaryRef);
 
   useEffect(() => {
+    // Reading client-only state (reduced-motion / body class set by the intro) on mount
+    // is a valid effect use here; the curtain may have already finished before we mount.
     if (reduced) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setRevealed(true);
       return;
     }

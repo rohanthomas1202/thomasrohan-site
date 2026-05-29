@@ -1,12 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
+
+const COARSE_QUERY = "(pointer: coarse)";
+
+function subscribeCoarse(cb: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const mq = window.matchMedia(COARSE_QUERY);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+
+// Read coarse-pointer capability without setState-in-effect; false on server.
+function useIsCoarsePointer(): boolean {
+  return useSyncExternalStore(
+    subscribeCoarse,
+    () => window.matchMedia(COARSE_QUERY).matches,
+    () => false,
+  );
+}
 
 export function Cursor() {
   const reduced = usePrefersReducedMotion();
-  // null = not yet decided (SSR / first render), true = capable, false = coarse/reduced
-  const [active, setActive] = useState<boolean | null>(null);
+  const coarse = useIsCoarsePointer();
+  // Derived directly during render — false on server and first client paint when reduced/coarse.
+  const active = !reduced && !coarse;
   const [big, setBig] = useState(false);
 
   const ringRef = useRef<HTMLDivElement>(null);
@@ -16,12 +35,6 @@ export function Cursor() {
   const cxRef = useRef(0);
   const cyRef = useRef(0);
   const rafRef = useRef<number>(0);
-
-  // On mount: decide if we should be active
-  useEffect(() => {
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
-    setActive(!reduced && !coarse);
-  }, [reduced]);
 
   // Main effect: only runs when active === true
   useEffect(() => {
