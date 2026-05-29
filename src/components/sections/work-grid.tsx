@@ -1,72 +1,89 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import { projects, featuredStack } from "@/content/projects";
+import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
-type Project = {
-  title: string;
-  blurb: string;
-  stack: string;
-  year: string;
-  tag: string;
-  href: string;
-  live?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "AgentForge Healthcare",
-    blurb:
-      "AI healthcare agent on OpenEMR FHIR R4, orchestrated with LangGraph across 5 tools and a 3-layer verification stack. 57-case eval suite.",
-    stack: "Python · LangGraph · FHIR R4",
-    year: "2026",
-    tag: "AI Agent",
-    href: "https://github.com/rohanthomas1202/agentforge-healthcare",
-  },
-  {
-    title: "Alcohol Label Verifier",
-    blurb:
-      "Claude-Vision pipeline that audits TTB compliance on alcohol labels — uploads to verdict in seconds, with structured violation reports.",
-    stack: "TypeScript · Next.js · Claude Vision",
-    year: "2026",
-    tag: "Vision AI",
-    href: "https://github.com/rohanthomas1202/Alcohol-Label-Verifier",
-    live: "https://alcohol-label-verifier-nine.vercel.app",
-  },
-  {
-    title: "ChatBridge",
-    blurb:
-      "Plugin-based AI chat platform with sandboxed iframe runtime; ships chess (Stockfish WASM), weather, and Spotify OAuth plugins out of the box.",
-    stack: "React · Zustand · Mantine · Hono",
-    year: "2026",
-    tag: "Platform",
-    href: "https://github.com/rohanthomas1202/chatbridge",
-  },
-  {
-    title: "Shipyard",
-    blurb:
-      "Autonomous coding agent built on LangGraph + Claude — surgical file edits, sub-agent coordination, injectable context.",
-    stack: "Python · LangGraph · Claude",
-    year: "2026",
-    tag: "Dev Tools",
-    href: "https://github.com/rohanthomas1202/Shipyard",
-  },
-  {
-    title: "HypeInvest V2",
-    blurb:
-      "HackUTD-winning sentiment platform: a real-time Hype Index aggregating Reddit, YouTube, Bluesky, and StockTwits into actionable signal.",
-    stack: "Next.js 15 · React 19 · FastAPI",
-    year: "2026",
-    tag: "Fintech",
-    href: "https://github.com/rohanthomas1202/HypeInvest-V2",
-  },
-];
-
-const featuredStack = ["Python", "FastAPI", "Next.js", "FAISS", "Claude"];
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function WorkGrid() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const featuredCardRef = useRef<HTMLAnchorElement>(null);
+  const gridRef = useRef<HTMLUListElement>(null);
+  const reduced = usePrefersReducedMotion();
+
+  // Featured card pointer tilt
+  useEffect(() => {
+    const card = featuredCardRef.current;
+    if (!card) return;
+    if (reduced) return;
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
+
+    const handlePointerMove = (e: PointerEvent) => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);   // -1 to 1
+      const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+      const rotateY = dx * 7;   // max 7deg
+      const rotateX = -dy * 6;  // max 6deg
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      // scale the image inside for depth
+      const img = card.querySelector("img");
+      if (img) img.style.transform = "scale(1.04)";
+    };
+
+    const handlePointerLeave = () => {
+      card.style.transform = "";
+      const img = card.querySelector("img");
+      if (img) img.style.transform = "";
+    };
+
+    card.addEventListener("pointermove", handlePointerMove);
+    card.addEventListener("pointerleave", handlePointerLeave);
+    return () => {
+      card.removeEventListener("pointermove", handlePointerMove);
+      card.removeEventListener("pointerleave", handlePointerLeave);
+    };
+  }, [reduced]);
+
+  // Grid assemble-on-scroll
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    if (reduced) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(grid.querySelectorAll("li"));
+      gsap.fromTo(
+        cards,
+        { y: 40, opacity: 0, rotateX: -8 },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: grid,
+            start: "top 80%",
+          },
+        },
+      );
+    }, grid);
+
+    return () => ctx.revert();
+  }, [reduced]);
+
   return (
     <section
+      ref={sectionRef}
       id="work"
       className="border-t border-border px-6 py-32 sm:py-40"
     >
@@ -158,10 +175,13 @@ export function WorkGrid() {
           </div>
 
           <a
+            ref={featuredCardRef}
             href="https://frontend-indol-five-84.vercel.app"
             target="_blank"
             rel="noreferrer"
+            data-hover
             className="group lg:col-span-7"
+            style={{ transformStyle: "preserve-3d" }}
           >
             <div className="relative aspect-[2/1] overflow-hidden rounded-xl border border-border bg-background">
               <Image
@@ -199,7 +219,11 @@ export function WorkGrid() {
           </a>
         </div>
 
-        <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul
+          ref={gridRef}
+          style={{ perspective: "800px" }}
+          className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3"
+        >
           {projects.map((p, i) => (
             <li
               key={p.title}
