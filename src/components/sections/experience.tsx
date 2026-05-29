@@ -1,8 +1,50 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { roles } from "@/content/experience";
+import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function Experience() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduced = usePrefersReducedMotion();
+
+  // Per-role reveal on scroll
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    if (reduced) return;
+
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>("li[data-role]", section);
+      items.forEach((li) => {
+        gsap.fromTo(
+          li,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: li,
+              start: "top 85%",
+            },
+          },
+        );
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, [reduced]);
+
   return (
     <section
+      ref={sectionRef}
       id="experience"
       className="border-t border-border px-6 py-32 sm:py-40"
     >
@@ -20,7 +62,11 @@ export function Experience() {
 
         <ol className="divide-y divide-border">
           {roles.map((r) => (
-            <li key={r.company} className="grid gap-8 py-12 lg:grid-cols-12">
+            <li
+              key={r.company}
+              data-role
+              className="grid gap-8 py-12 lg:grid-cols-12"
+            >
               <div className="lg:col-span-5">
                 <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted">
                   <span>{r.period}</span>
