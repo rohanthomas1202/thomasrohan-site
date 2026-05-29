@@ -1,10 +1,35 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import { Parallax } from "@/components/motion/parallax";
+import { useMagnetic } from "@/components/motion/use-magnetic";
+
 export function Footer() {
+  const emailRef = useRef<HTMLAnchorElement>(null);
+  useMagnetic(emailRef);
+
   return (
     <footer
       id="contact"
-      className="border-t border-border px-6 pt-32 pb-10"
+      className="relative overflow-hidden border-t border-border px-6 pt-32 pb-10"
     >
-      <div className="mx-auto max-w-7xl">
+      {/* Decorative avatar peeking from the bottom-right corner. */}
+      <Parallax
+        depth={20}
+        className="pointer-events-none absolute -right-12 -bottom-16 -z-10 select-none opacity-20 sm:right-0 sm:-bottom-24 sm:opacity-40"
+      >
+        <Image
+          src="/rohan-avatar.png"
+          alt=""
+          width={360}
+          height={360}
+          aria-hidden
+          className="h-auto w-[220px] sm:w-[360px]"
+        />
+      </Parallax>
+
+      <div className="relative mx-auto max-w-7xl">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
           04 / Contact
         </p>
@@ -19,8 +44,10 @@ export function Footer() {
               Email
             </p>
             <a
+              ref={emailRef}
+              data-hover
               href="mailto:contact@thomasrohan.com"
-              className="mt-2 block text-lg hover:text-accent"
+              className="mt-2 inline-block text-lg hover:text-accent"
             >
               contact@thomasrohan.com
             </a>
@@ -32,6 +59,7 @@ export function Footer() {
             <ul className="mt-2 space-y-1 text-lg">
               <li>
                 <a
+                  data-hover
                   href="https://github.com/rohanthomas1202"
                   target="_blank"
                   rel="noreferrer"
@@ -42,6 +70,7 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  data-hover
                   href="https://www.linkedin.com/in/RohanSThomas"
                   target="_blank"
                   rel="noreferrer"
@@ -52,6 +81,7 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  data-hover
                   href="tel:+14695167477"
                   className="hover:text-accent"
                 >
