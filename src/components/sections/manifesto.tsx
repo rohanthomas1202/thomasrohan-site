@@ -19,9 +19,10 @@ export function Manifesto() {
       const words = gsap.utils.toArray<HTMLElement>("[data-word]");
       gsap.fromTo(
         words,
-        { opacity: 0.18 },
+        { opacity: 0.18, yPercent: 18 },
         {
           opacity: 1,
+          yPercent: 0,
           stagger: 0.04,
           ease: "none",
           scrollTrigger: {
@@ -43,9 +44,17 @@ export function Manifesto() {
     <section
       ref={root}
       id="about"
-      className="border-t border-border px-6 py-32 sm:py-48"
+      className="relative border-t border-border px-6 py-32 sm:py-48"
     >
-      <div className="mx-auto max-w-7xl">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 45%, rgba(197,255,0,0.04), transparent 70%), linear-gradient(var(--background), transparent 30%, transparent 70%, var(--background))",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl">
         <div className="mb-16 flex items-center justify-between font-mono text-xs uppercase tracking-widest text-muted">
           <span>01 / Manifesto</span>
           <span>What I believe</span>
