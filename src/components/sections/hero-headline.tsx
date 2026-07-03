@@ -36,7 +36,7 @@ export function HeroHeadline({ className }: { className?: string }) {
   const coarse = useCoarsePointer();
   const [entered, setEntered] = useState(true); // SSR + revisits render at rest
   const [lit, setLit] = useState<number | null>(null);
-  const [color, setColor] = useState(HIGHLIGHTS[0]);
+  const [colors, setColors] = useState<Record<number, string>>({});
   const lastPick = useRef(-1);
   const words = useRef<(HTMLSpanElement | null)[]>([]);
   const busy = useRef<Set<number>>(new Set());
@@ -81,7 +81,7 @@ export function HeroHeadline({ className }: { className?: string }) {
         p = Math.floor(Math.random() * HIGHLIGHTS.length);
       } while (p === lastPick.current);
       lastPick.current = p;
-      setColor(HIGHLIGHTS[p]);
+      setColors((m) => ({ ...m, [i]: HIGHLIGHTS[p] }));
       setLit(i);
       boop(i, 1);
       [i - 1, i + 1].forEach((j) => {
@@ -124,7 +124,7 @@ export function HeroHeadline({ className }: { className?: string }) {
               <motion.span
                 aria-hidden
                 className="absolute inset-y-[0.05em] -inset-x-[0.08em] -z-10 rounded-[0.2em]"
-                style={{ background: color, transformOrigin: lit === i ? "left" : "right" }}
+                style={{ background: colors[i] ?? HIGHLIGHTS[0], transformOrigin: lit === i ? "left" : "right" }}
                 initial={false}
                 animate={
                   reduced
