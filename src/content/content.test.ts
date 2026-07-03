@@ -24,3 +24,11 @@ describe("experience content", () => {
     }
   });
 });
+describe("compressed experience view", () => {
+  it("every role has a headline metric and label", () => {
+    for (const r of roles) {
+      expect(r.headline.metric.length).toBeGreaterThan(0);
+      expect(r.headline.label.length).toBeGreaterThan(0);
+    }
+  });
+});

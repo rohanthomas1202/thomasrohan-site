@@ -4,6 +4,7 @@ export type Role = {
   location: string;
   period: string;
   current?: boolean;
+  headline: { metric: string; label: string };
   highlights: { text: string; metric?: string }[];
 };
 
@@ -14,6 +15,7 @@ export const roles: Role[] = [
     location: "Austin, TX",
     period: "2022 → Present",
     current: true,
+    headline: { metric: "$3T+", label: "assets under management tooling" },
     highlights: [
       {
         text: "Architected Angular interfaces for portfolio management tools handling",
@@ -36,6 +38,7 @@ export const roles: Role[] = [
     role: "Software Engineering Co-Op",
     location: "Philadelphia, PA",
     period: "2021 → 2022",
+    headline: { metric: "+30%", label: "peak-season throughput" },
     highlights: [
       {
         text: "Designed a sortation system across 5 distribution centers, scaling throughput",
@@ -56,6 +59,7 @@ export const roles: Role[] = [
     role: "Software Engineering Intern",
     location: "Plano, TX",
     period: "2020",
+    headline: { metric: "−80%", label: "claims processing time" },
     highlights: [
       {
         text: "Shipped a batch upload platform replacing manual entry for 1,000+ providers —",
