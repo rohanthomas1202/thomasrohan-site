@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { MotionProvider } from "@/components/motion/motion-provider";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -48,8 +49,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${bricolage.variable} ${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-paper text-ink">
-        <Nav />
-        {children}
+        <MotionProvider>
+          <Nav />
+          {children}
+        </MotionProvider>
         <Analytics />
       </body>
     </html>
