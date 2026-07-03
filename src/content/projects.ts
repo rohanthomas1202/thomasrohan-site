@@ -56,5 +56,3 @@ export const projects: Project[] = [
     href: "https://github.com/rohanthomas1202/HypeInvest-V2",
   },
 ];
-
-export const featuredStack: string[] = ["Python", "FastAPI", "Next.js", "FAISS", "Claude"];

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { projects, featuredStack } from "./projects";
+import { projects } from "./projects";
 import { roles } from "./experience";
 
 describe("projects content", () => {
@@ -10,9 +10,6 @@ describe("projects content", () => {
       expect(p.href).toMatch(/^https?:\/\//);
       if (p.live) expect(p.live).toMatch(/^https?:\/\//);
     }
-  });
-  it("has a non-empty featured stack", () => {
-    expect(featuredStack.length).toBeGreaterThan(0);
   });
 });
 describe("experience content", () => {

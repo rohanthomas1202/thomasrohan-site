@@ -4,7 +4,7 @@ export function Footer() {
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">Contact</p>
       <a
         href="mailto:claude@thomasrohan.com"
-        className="email-fill mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl md:text-6xl"
+        className="email-fill mt-4 font-display text-[clamp(1.25rem,7.5vw,3.75rem)] font-bold tracking-tight text-ink"
       >
         <span aria-hidden className="fill">
           claude@thomasrohan.com

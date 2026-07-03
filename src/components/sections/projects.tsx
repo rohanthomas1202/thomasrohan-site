@@ -1,12 +1,12 @@
 import { projects, type Project } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
-const ACCENTS: Record<string, { text: string; bg: string; tint: string }> = {
-  "AgentForge Healthcare": { text: "text-blue", bg: "bg-blue", tint: "bg-blue-tint" },
-  "Alcohol Label Verifier": { text: "text-tangerine", bg: "bg-tangerine", tint: "bg-tangerine-tint" },
-  ChatBridge: { text: "text-pink", bg: "bg-pink", tint: "bg-pink-tint" },
-  Shipyard: { text: "text-green", bg: "bg-green", tint: "bg-green-tint" },
-  "HypeInvest V2": { text: "text-violet", bg: "bg-violet", tint: "bg-violet-tint" },
+const ACCENTS: Record<string, { bg: string; tint: string; deco: string }> = {
+  "AgentForge Healthcare": { bg: "bg-blue", tint: "bg-blue-tint", deco: "decoration-blue" },
+  "Alcohol Label Verifier": { bg: "bg-tangerine", tint: "bg-tangerine-tint", deco: "decoration-tangerine" },
+  ChatBridge: { bg: "bg-pink", tint: "bg-pink-tint", deco: "decoration-pink" },
+  Shipyard: { bg: "bg-green", tint: "bg-green-tint", deco: "decoration-green" },
+  "HypeInvest V2": { bg: "bg-violet", tint: "bg-violet-tint", deco: "decoration-violet" },
 };
 const FEATURED = new Set(["AgentForge Healthcare", "Alcohol Label Verifier"]);
 
@@ -57,11 +57,21 @@ function Card({ project, index }: { project: Project; index: number }) {
         <span className="ml-auto font-mono text-xs text-ink-soft">{project.year}</span>
       </div>
       <div className="relative z-10 mt-4 flex gap-4 text-sm font-medium">
-        <a href={project.href} target="_blank" rel="noreferrer" className={cn("hover:underline", accent.text)}>
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noreferrer"
+          className={cn("text-ink underline decoration-2 underline-offset-4 hover:opacity-70", accent.deco)}
+        >
           GitHub ↗
         </a>
         {project.live && (
-          <a href={project.live} target="_blank" rel="noreferrer" className={cn("hover:underline", accent.text)}>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noreferrer"
+            className={cn("text-ink underline decoration-2 underline-offset-4 hover:opacity-70", accent.deco)}
+          >
             Live demo ↗
           </a>
         )}
