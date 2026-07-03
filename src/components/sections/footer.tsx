@@ -1,4 +1,5 @@
 import { Reveal, RevealItem } from "@/components/motion/reveal";
+import { CopyEmail } from "@/components/copy-email";
 
 export function Footer() {
   return (
@@ -8,15 +9,18 @@ export function Footer() {
           <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">Contact</p>
         </RevealItem>
         <RevealItem>
-          <a
-            href="mailto:claude@thomasrohan.com"
-            className="email-fill mt-4 font-display text-[clamp(1.1rem,6.5vw,3.75rem)] font-bold tracking-tight text-ink"
-          >
-            <span aria-hidden className="fill">
+          <div className="mt-4 flex flex-wrap items-center gap-4">
+            <a
+              href="mailto:claude@thomasrohan.com"
+              className="email-fill font-display text-[clamp(1.1rem,6.5vw,3.75rem)] font-bold tracking-tight text-ink"
+            >
+              <span aria-hidden className="fill">
+                claude@thomasrohan.com
+              </span>
               claude@thomasrohan.com
-            </span>
-            claude@thomasrohan.com
-          </a>
+            </a>
+            <CopyEmail email="claude@thomasrohan.com" />
+          </div>
         </RevealItem>
         <RevealItem>
           <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-line pt-6 text-sm">

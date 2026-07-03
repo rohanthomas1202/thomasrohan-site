@@ -1,0 +1,20 @@
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { CopyEmail } from "./copy-email";
+
+describe("CopyEmail", () => {
+  it("copies the address and confirms", async () => {
+    const user = userEvent.setup();
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    vi.spyOn(navigator.clipboard, "writeText").mockImplementation(writeText);
+
+    render(<CopyEmail email="claude@thomasrohan.com" />);
+    await user.click(screen.getByRole("button", { name: /copy/i }));
+
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith("claude@thomasrohan.com");
+    });
+    expect(await screen.findByText("Copied")).toBeInTheDocument();
+  });
+});
