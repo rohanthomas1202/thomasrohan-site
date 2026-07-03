@@ -1,5 +1,11 @@
 import { roles } from "@/content/experience";
 
+const ROW_ACCENTS: Record<string, string> = {
+  "Charles Schwab": "var(--blue)",
+  FedEx: "var(--tangerine)",
+  "United Healthcare": "var(--green)",
+};
+
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-24">
@@ -14,14 +20,15 @@ export function About() {
         {roles.map((r) => (
           <li
             key={r.company}
-            className="flex flex-col gap-1 border-b border-line py-5 sm:flex-row sm:items-baseline sm:gap-6"
+            style={{ "--row-accent": ROW_ACCENTS[r.company] ?? "var(--blue)" } as React.CSSProperties}
+            className="exp-row -mx-4 flex flex-col gap-1 border-b border-line px-4 py-5 sm:flex-row sm:items-baseline sm:gap-6"
           >
             <span className="w-44 shrink-0 font-display text-lg font-bold text-ink">{r.company}</span>
             <span className="text-sm text-ink-soft">
               {r.role} · {r.period}
             </span>
             <span className="sm:ml-auto sm:text-right">
-              <span className="font-display text-2xl font-bold tracking-tight text-ink">
+              <span className="exp-metric font-display text-2xl font-bold tracking-tight text-ink">
                 {r.headline.metric}
               </span>{" "}
               <span className="text-sm text-ink-soft">{r.headline.label}</span>

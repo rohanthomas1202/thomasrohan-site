@@ -102,3 +102,29 @@ body {
 .email-fill:focus-visible .fill {
   clip-path: inset(0 0 0 0);
 }
+
+/* Accent focus rings hugging the corner radius; per-element override via --focus-ring. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid transparent; /* forced-colors fallback */
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 5px var(--focus-ring, var(--blue));
+}
+
+/* Experience rows: contiguous full-bleed hover targets, tint follows the cursor. */
+@media (hover: hover) {
+  .exp-row {
+    border-radius: 16px;
+    transition: background-color 150ms ease-out;
+  }
+  .exp-row:hover {
+    background-color: color-mix(in srgb, var(--row-accent) 8%, transparent);
+  }
+  .exp-row .exp-metric {
+    transition: color 150ms ease-out;
+  }
+  .exp-row:hover .exp-metric {
+    color: var(--row-accent);
+  }
+}

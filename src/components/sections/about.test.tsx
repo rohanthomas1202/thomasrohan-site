@@ -18,4 +18,11 @@ describe("About", () => {
       expect(screen.getByText(r.headline.label)).toBeInTheDocument();
     }
   });
+
+  it("renders role and period on each row", () => {
+    render(<About />);
+    for (const r of roles) {
+      expect(screen.getByText(`${r.role} · ${r.period}`)).toBeInTheDocument();
+    }
+  });
 });
