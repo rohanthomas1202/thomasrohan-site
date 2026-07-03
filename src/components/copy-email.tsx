@@ -26,20 +26,23 @@ export function CopyEmail({ email }: { email: string }) {
     <button
       type="button"
       onClick={copy}
-      aria-live="polite"
+      aria-label="Copy email address"
       className="inline-flex w-24 items-center justify-center rounded-full border-2 border-ink px-3 py-1.5 font-mono text-xs text-ink"
     >
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={copied ? "copied" : "copy"}
-          initial={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
-          transition={SPRING.highlight}
-        >
-          {copied ? "Copied" : "Copy"}
-        </motion.span>
-      </AnimatePresence>
+      <span aria-hidden="true">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            key={copied ? "copied" : "copy"}
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
+            transition={SPRING.highlight}
+          >
+            {copied ? "Copied" : "Copy"}
+          </motion.span>
+        </AnimatePresence>
+      </span>
+      <span aria-live="polite" className="sr-only">{copied ? "Copied" : ""}</span>
     </button>
   );
 }

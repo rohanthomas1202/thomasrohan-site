@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { motion, type Variants } from "motion/react";
 import type { Project } from "@/content/projects";
 import { SPRING } from "@/components/motion/springs";
@@ -50,13 +51,15 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const featured = FEATURED.has(project.title);
   const primary = project.live ?? project.href;
   const tilt = index % 2 === 0 ? 1 : -1;
+  const [focused, setFocused] = useState(false);
   return (
     <motion.article
       initial="hidden"
-      whileInView="visible"
+      whileInView={focused ? "hover" : "visible"}
       whileHover="hover"
-      whileFocus="hover"
       whileTap={{ scale: 0.985, transition: SPRING.press }}
+      onFocus={() => setFocused(true)}
+      onBlur={(e) => setFocused(e.currentTarget.contains(e.relatedTarget as Node))}
       viewport={{ once: true, margin: "-15% 0px" }}
       variants={cardVariants(tilt)}
       style={{ "--card-accent": accent.cssVar, "--focus-ring": accent.cssVar, transformOrigin: "center bottom" } as React.CSSProperties}

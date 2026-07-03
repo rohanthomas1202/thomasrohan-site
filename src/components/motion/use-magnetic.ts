@@ -16,6 +16,8 @@ export function useMagnetic(ref: RefObject<HTMLElement | null>, strength = 0.4) 
     const el = ref.current;
     rawX.set(0);
     rawY.set(0);
+    x.jump(0);
+    y.jump(0);
     if (!el || reduced || window.matchMedia("(pointer: coarse)").matches) return;
     const move = (e: PointerEvent) => {
       const o = magneticOffset(e.clientX, e.clientY, el.getBoundingClientRect(), strength);
@@ -32,7 +34,7 @@ export function useMagnetic(ref: RefObject<HTMLElement | null>, strength = 0.4) 
       el.removeEventListener("pointermove", move);
       el.removeEventListener("pointerleave", leave);
     };
-  }, [ref, strength, reduced, rawX, rawY]);
+  }, [ref, strength, reduced, rawX, rawY, x, y]);
 
   return { x, y };
 }

@@ -15,6 +15,7 @@ describe("CopyEmail", () => {
     await waitFor(() => {
       expect(writeText).toHaveBeenCalledWith("claude@thomasrohan.com");
     });
-    expect(await screen.findByText("Copied")).toBeInTheDocument();
+    const copiedNodes = await screen.findAllByText("Copied");
+    expect(copiedNodes.length).toBeGreaterThan(0);
   });
 });
