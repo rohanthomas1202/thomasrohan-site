@@ -32,4 +32,13 @@ describe("Projects", () => {
     expect(screen.getAllByText("LangGraph").length).toBeGreaterThan(0);
     expect(screen.getByText("FHIR R4")).toBeInTheDocument();
   });
+
+  it("gives every card its own selection accent via CSS var", () => {
+    render(<Projects />);
+    const cards = document.querySelectorAll(".project-card");
+    expect(cards.length).toBe(projects.length);
+    cards.forEach((c) => {
+      expect((c as HTMLElement).style.getPropertyValue("--card-accent")).not.toBe("");
+    });
+  });
 });

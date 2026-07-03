@@ -128,3 +128,9 @@ button:focus-visible {
     color: var(--row-accent);
   }
 }
+
+/* Selecting text inside a card highlights in that card's accent. */
+.project-card ::selection {
+  background: var(--card-accent);
+  color: var(--paper);
+}
