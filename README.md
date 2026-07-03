@@ -1,49 +1,30 @@
 # thomasrohan.com
 
-Personal site for [Rohan Thomas](https://github.com/rohanthomas1202) — full-stack engineer at Charles Schwab, building AI agents and trading tools after hours.
+Personal site for [Rohan Thomas](https://github.com/rohanthomas1202) — full-stack engineer at Charles Schwab, building AI products after hours.
 
 → Live at **[thomasrohan.com](https://thomasrohan.com)**
+
+## Design
+
+Playful and personal: warm cream canvas, five saturated accent colors (one per project card), Bricolage Grotesque display type, sticker-style chips, and springy interaction. Copy stays plain. Single scrolling page — work, about, contact.
+
+Spec: `docs/superpowers/specs/2026-07-03-playful-redesign-design.md`
 
 ## Stack
 
 - [Next.js 16](https://nextjs.org) — App Router, Turbopack
 - [React 19](https://react.dev), TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com)
-- [GSAP](https://gsap.com) + ScrollTrigger — scroll choreography
-- [Motion](https://motion.dev) — component micro-interactions
-- [Lenis](https://lenis.darkroom.engineering) — smooth scroll
+- [Motion](https://motion.dev) — springs and micro-interactions
+- [Vitest](https://vitest.dev) + React Testing Library
 - [Vercel Analytics](https://vercel.com/docs/analytics)
 
-## Run locally
+## Develop
 
-```bash
+```
 pnpm install
-pnpm dev
+pnpm dev        # localhost:3000
+pnpm test       # vitest
+pnpm lint
+pnpm build
 ```
-
-Then open [localhost:3000](http://localhost:3000).
-
-## Layout
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # root metadata, fonts, analytics
-│   ├── page.tsx            # composes the home sections
-│   ├── globals.css         # Tailwind theme + accent token
-│   ├── opengraph-image.tsx # dynamic OG card
-│   └── icon.tsx            # favicon
-├── components/
-│   ├── hero.tsx
-│   ├── nav.tsx
-│   ├── footer.tsx
-│   ├── lenis-provider.tsx
-│   └── sections/
-│       ├── manifesto.tsx
-│       ├── work-grid.tsx
-│       └── marquee.tsx
-└── lib/
-    └── utils.ts
-```
-
-The accent color (`--accent: #c5ff00`) lives in `src/app/globals.css`.
