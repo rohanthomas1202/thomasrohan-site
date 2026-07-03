@@ -1,5 +1,11 @@
 "use client";
-import { useCallback, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { animate, motion } from "motion/react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import { cn } from "@/lib/utils";
@@ -19,7 +25,8 @@ function useCoarsePointer(): boolean {
   );
 }
 
-export const HEADLINE = "I build AI products — agents, dev tools, and the interfaces around them.";
+export const HEADLINE =
+  "I build AI products — agents, dev tools, and the interfaces around them.";
 const WORDS = HEADLINE.split(" ");
 const HIGHLIGHTS = [
   "var(--blue-tint)",
@@ -65,7 +72,11 @@ export function HeroHeadline({ className }: { className?: string }) {
         { duration: 0.11, ease: "easeOut" },
       )
         .then(() =>
-          animate(el, { y: 0, scaleY: 1, rotate: 0 }, { type: "spring", stiffness: 380, damping: 10, mass: 0.6 }),
+          animate(
+            el,
+            { y: 0, scaleY: 1, rotate: 0 },
+            { type: "spring", stiffness: 380, damping: 10, mass: 0.6 },
+          ),
         )
         .finally(() => busy.current.delete(i));
     },
@@ -86,7 +97,8 @@ export function HeroHeadline({ className }: { className?: string }) {
       boop(i, 1);
       [i - 1, i + 1].forEach((j) => {
         const n = words.current[j];
-        if (n && n.offsetTop === el.offsetTop) setTimeout(() => boop(j, 0.3), 45);
+        if (n && n.offsetTop === el.offsetTop)
+          setTimeout(() => boop(j, 0.3), 45);
       });
       if (coarse) {
         if (unlightTimer.current) clearTimeout(unlightTimer.current);
@@ -106,39 +118,50 @@ export function HeroHeadline({ className }: { className?: string }) {
     >
       <span aria-hidden="true">
         {WORDS.map((w, i) => (
-          <motion.span
-            key={i}
-            className="inline-block"
-            animate={entered ? { y: 0, opacity: 1 } : { y: 24, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 25, delay: entered ? i * 0.03 : 0 }}
-          >
-            <span
-              ref={(el) => {
-                words.current[i] = el;
+          <span key={i}>
+            {i > 0 ? " " : ""}
+            <motion.span
+              className="inline-block"
+              animate={entered ? { y: 0, opacity: 1 } : { y: 24, opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 25,
+                delay: entered ? i * 0.03 : 0,
               }}
-              onPointerEnter={coarse ? undefined : () => fire(i)}
-              onPointerLeave={coarse ? undefined : () => setLit(null)}
-              onClick={coarse ? () => fire(i) : undefined}
-              className="relative inline-block cursor-default px-[0.04em]"
             >
-              <motion.span
-                aria-hidden
-                className="absolute inset-y-[0.05em] -inset-x-[0.08em] -z-10 rounded-[0.2em]"
-                style={{ background: colors[i] ?? HIGHLIGHTS[0], transformOrigin: lit === i ? "left" : "right" }}
-                initial={false}
-                animate={
-                  reduced
-                    ? { opacity: lit === i ? 1 : 0, scaleX: 1 }
-                    : { scaleX: lit === i ? 1 : 0, opacity: 1 }
-                }
-                transition={
-                  reduced ? { duration: 0.15 } : { type: "spring", stiffness: 300, damping: 24 }
-                }
-              />
-              {w}
-            </span>
-            {i < WORDS.length - 1 ? " " : ""}
-          </motion.span>
+              <span
+                ref={(el) => {
+                  words.current[i] = el;
+                }}
+                onPointerEnter={coarse ? undefined : () => fire(i)}
+                onPointerLeave={coarse ? undefined : () => setLit(null)}
+                onClick={coarse ? () => fire(i) : undefined}
+                className="relative inline-block cursor-default px-[0.04em]"
+              >
+                <motion.span
+                  aria-hidden
+                  className="absolute inset-y-[0.05em] -inset-x-[0.08em] -z-10 rounded-[0.2em]"
+                  style={{
+                    background: colors[i] ?? HIGHLIGHTS[0],
+                    transformOrigin: lit === i ? "left" : "right",
+                  }}
+                  initial={false}
+                  animate={
+                    reduced
+                      ? { opacity: lit === i ? 1 : 0, scaleX: 1 }
+                      : { scaleX: lit === i ? 1 : 0, opacity: 1 }
+                  }
+                  transition={
+                    reduced
+                      ? { duration: 0.15 }
+                      : { type: "spring", stiffness: 300, damping: 24 }
+                  }
+                />
+                {w}
+              </span>
+            </motion.span>
+          </span>
         ))}
       </span>
     </h1>
