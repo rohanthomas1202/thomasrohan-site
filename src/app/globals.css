@@ -92,3 +92,25 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Footer email: ink fill rises on hover. Layered spans; reduced-motion kill-switch zeroes the transition. */
+.email-fill {
+  position: relative;
+  display: inline-block;
+  border-radius: 0.5rem;
+}
+.email-fill .fill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 0.5rem;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.45s var(--ease-expo);
+}
+.email-fill:hover .fill,
+.email-fill:focus-visible .fill {
+  clip-path: inset(0 0 0 0);
+}
