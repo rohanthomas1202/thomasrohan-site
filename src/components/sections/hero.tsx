@@ -15,13 +15,13 @@ export function Hero() {
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <MagneticLink
           href="#work"
-          className="rounded-full bg-ink px-7 py-3.5 font-medium text-paper transition-transform hover:scale-[1.03]"
+          className="rounded-full bg-ink px-7 py-3.5 font-medium text-paper"
         >
           See the work ↓
         </MagneticLink>
         <MagneticLink
           href="mailto:claude@thomasrohan.com"
-          className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink transition-transform hover:scale-[1.03]"
+          className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink"
         >
           Say hi
         </MagneticLink>

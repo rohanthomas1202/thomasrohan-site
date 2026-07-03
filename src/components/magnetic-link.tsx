@@ -1,6 +1,8 @@
 "use client";
 import { useRef } from "react";
+import { motion, useTransform } from "motion/react";
 import { useMagnetic } from "@/components/motion/use-magnetic";
+import { SPRING } from "@/components/motion/springs";
 import { cn } from "@/lib/utils";
 
 export function MagneticLink({
@@ -13,10 +15,20 @@ export function MagneticLink({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
-  useMagnetic(ref, 0.3);
+  const { x, y } = useMagnetic(ref, 0.3);
+  const labelX = useTransform(x, (v) => v * -0.2);
+  const labelY = useTransform(y, (v) => v * -0.2);
   return (
-    <a ref={ref} href={href} className={cn("inline-block", className)}>
-      {children}
-    </a>
+    <motion.a
+      ref={ref}
+      href={href}
+      style={{ x, y }}
+      whileTap={{ scaleX: 1.03, scaleY: 0.95, transition: SPRING.press }}
+      className={cn("inline-block", className)}
+    >
+      <motion.span style={{ x: labelX, y: labelY }} className="inline-block">
+        {children}
+      </motion.span>
+    </motion.a>
   );
 }
