@@ -20,7 +20,9 @@ const FEATURED = new Set(["AgentForge Healthcare", "Alcohol Label Verifier"]);
 const cardVariants = (tilt: number): Variants => ({
   hidden: { opacity: 0, y: 24, rotate: 0 },
   visible: { opacity: 1, y: 0, rotate: tilt, transition: SPRING.reveal },
-  hover: { rotate: 0, transition: SPRING.hover },
+  /* Must re-state opacity/y: when focus routes this variant through the
+     whileInView slot, missing props fall back to `hidden` and the card vanishes. */
+  hover: { opacity: 1, y: 0, rotate: 0, transition: SPRING.hover },
 });
 const arrowOut: Variants = {
   hidden: { x: "0%", y: "0%" },
