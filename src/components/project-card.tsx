@@ -22,14 +22,17 @@ const cardVariants = (tilt: number): Variants => ({
   hover: { rotate: 0, transition: SPRING.hover },
 });
 const arrowOut: Variants = {
+  hidden: { x: "0%", y: "0%" },
   visible: { x: "0%", y: "0%" },
   hover: { x: "110%", y: "-110%", transition: SPRING.arrow },
 };
 const arrowIn: Variants = {
+  hidden: { x: "-110%", y: "110%" },
   visible: { x: "-110%", y: "110%" },
   hover: { x: "0%", y: "0%", transition: SPRING.arrow },
 };
 const linkArrow: Variants = {
+  hidden: { x: 0 },
   visible: { x: 0 },
   hover: { x: 3, transition: SPRING.arrow },
 };
