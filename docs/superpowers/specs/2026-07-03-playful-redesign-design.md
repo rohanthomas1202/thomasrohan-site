@@ -80,7 +80,7 @@ a random accent-color highlight on hover. Everything else stays quiet.
   component renders the compressed view).
 
 ### 4. Contact footer
-- Oversized `claude@thomasrohan.com` mailto with a hover fill effect.
+- Oversized `contact@thomasrohan.com` mailto with a hover fill effect.
 - GitHub + LinkedIn links.
 - Small plain sign-off line.
 

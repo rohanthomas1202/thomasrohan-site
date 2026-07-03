@@ -894,9 +894,9 @@ beforeEach(() => {
 describe("CopyEmail", () => {
   it("copies the address and confirms", async () => {
     const user = userEvent.setup();
-    render(<CopyEmail email="claude@thomasrohan.com" />);
+    render(<CopyEmail email="contact@thomasrohan.com" />);
     await user.click(screen.getByRole("button", { name: /copy/i }));
-    expect(writeText).toHaveBeenCalledWith("claude@thomasrohan.com");
+    expect(writeText).toHaveBeenCalledWith("contact@thomasrohan.com");
     expect(await screen.findByText("Copied")).toBeInTheDocument();
   });
 });
@@ -958,10 +958,10 @@ export function CopyEmail({ email }: { email: string }) {
 
 ```tsx
 <div className="mt-4 flex flex-wrap items-center gap-4">
-  <a href="mailto:claude@thomasrohan.com" className="email-fill font-display ...unchanged classes except mt-4 moves to the wrapper...">
+  <a href="mailto:contact@thomasrohan.com" className="email-fill font-display ...unchanged classes except mt-4 moves to the wrapper...">
     …unchanged…
   </a>
-  <CopyEmail email="claude@thomasrohan.com" />
+  <CopyEmail email="contact@thomasrohan.com" />
 </div>
 ```
 

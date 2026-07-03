@@ -24,7 +24,7 @@ describe("Hero", () => {
     expect(screen.getByRole("link", { name: /see the work/i })).toHaveAttribute("href", "#work");
     expect(screen.getByRole("link", { name: /say hi/i })).toHaveAttribute(
       "href",
-      "mailto:claude@thomasrohan.com",
+      "mailto:contact@thomasrohan.com",
     );
   });
 });

@@ -5,8 +5,8 @@ import { Footer } from "./footer";
 describe("Footer", () => {
   it("renders the oversized mailto", () => {
     render(<Footer />);
-    const mail = screen.getByRole("link", { name: /claude@thomasrohan\.com/i });
-    expect(mail).toHaveAttribute("href", "mailto:claude@thomasrohan.com");
+    const mail = screen.getByRole("link", { name: /contact@thomasrohan\.com/i });
+    expect(mail).toHaveAttribute("href", "mailto:contact@thomasrohan.com");
   });
 
   it("renders GitHub and LinkedIn links", () => {

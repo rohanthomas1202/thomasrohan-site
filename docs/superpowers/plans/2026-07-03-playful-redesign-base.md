@@ -18,7 +18,7 @@
 - **Animation in this plan:** none beyond `useMagnetic` on hero CTAs + CSS hover transitions. Everything respects reduced motion (globals.css kill-switch + `usePrefersReducedMotion` inside `useMagnetic`).
 - **Quality gates at every commit:** `pnpm test`, `pnpm lint`, `pnpm build` all green.
 - **Never merge/push to `main`.** Branch pushes only (Vercel previews). PR #1 (`redesign/cinematic-depth`) stays open.
-- Email: `claude@thomasrohan.com` · GitHub: `https://github.com/rohanthomas1202` · LinkedIn: `https://linkedin.com/in/RohanSThomas`.
+- Email: `contact@thomasrohan.com` · GitHub: `https://github.com/rohanthomas1202` · LinkedIn: `https://linkedin.com/in/RohanSThomas`.
 - Package manager is **pnpm** (lockfile: `pnpm-lock.yaml`).
 
 **Out of scope for this plan:** all motion-research items (reveals, tap squish, jelly headline, screenshots, Now line), dark mode, case studies. They land in a follow-up plan on top of this base.
@@ -413,7 +413,7 @@ describe("Hero", () => {
     expect(screen.getByRole("link", { name: /see the work/i })).toHaveAttribute("href", "#work");
     expect(screen.getByRole("link", { name: /say hi/i })).toHaveAttribute(
       "href",
-      "mailto:claude@thomasrohan.com",
+      "mailto:contact@thomasrohan.com",
     );
   });
 });
@@ -476,7 +476,7 @@ export function Hero() {
           See the work ↓
         </MagneticLink>
         <MagneticLink
-          href="mailto:claude@thomasrohan.com"
+          href="mailto:contact@thomasrohan.com"
           className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink transition-transform hover:scale-[1.03]"
         >
           Say hi
@@ -863,8 +863,8 @@ import { Footer } from "./footer";
 describe("Footer", () => {
   it("renders the oversized mailto", () => {
     render(<Footer />);
-    const mail = screen.getByRole("link", { name: /claude@thomasrohan\.com/i });
-    expect(mail).toHaveAttribute("href", "mailto:claude@thomasrohan.com");
+    const mail = screen.getByRole("link", { name: /contact@thomasrohan\.com/i });
+    expect(mail).toHaveAttribute("href", "mailto:contact@thomasrohan.com");
   });
 
   it("renders GitHub and LinkedIn links", () => {
@@ -925,13 +925,13 @@ export function Footer() {
     <footer id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 pt-24">
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">Contact</p>
       <a
-        href="mailto:claude@thomasrohan.com"
+        href="mailto:contact@thomasrohan.com"
         className="email-fill mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl md:text-6xl"
       >
         <span aria-hidden className="fill">
-          claude@thomasrohan.com
+          contact@thomasrohan.com
         </span>
-        claude@thomasrohan.com
+        contact@thomasrohan.com
       </a>
       <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-line pt-6 text-sm">
         <a

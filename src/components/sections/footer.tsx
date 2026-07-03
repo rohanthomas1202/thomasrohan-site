@@ -11,15 +11,15 @@ export function Footer() {
         <RevealItem>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <a
-              href="mailto:claude@thomasrohan.com"
+              href="mailto:contact@thomasrohan.com"
               className="email-fill font-display text-[clamp(1.1rem,6.5vw,3.75rem)] font-bold tracking-tight text-ink"
             >
               <span aria-hidden className="fill">
-                claude@thomasrohan.com
+                contact@thomasrohan.com
               </span>
-              claude@thomasrohan.com
+              contact@thomasrohan.com
             </a>
-            <CopyEmail email="claude@thomasrohan.com" />
+            <CopyEmail email="contact@thomasrohan.com" />
           </div>
         </RevealItem>
         <RevealItem>

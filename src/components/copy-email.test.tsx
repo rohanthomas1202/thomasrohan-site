@@ -9,11 +9,11 @@ describe("CopyEmail", () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     vi.spyOn(navigator.clipboard, "writeText").mockImplementation(writeText);
 
-    render(<CopyEmail email="claude@thomasrohan.com" />);
+    render(<CopyEmail email="contact@thomasrohan.com" />);
     await user.click(screen.getByRole("button", { name: /copy/i }));
 
     await waitFor(() => {
-      expect(writeText).toHaveBeenCalledWith("claude@thomasrohan.com");
+      expect(writeText).toHaveBeenCalledWith("contact@thomasrohan.com");
     });
     const copiedNodes = await screen.findAllByText("Copied");
     expect(copiedNodes.length).toBeGreaterThan(0);

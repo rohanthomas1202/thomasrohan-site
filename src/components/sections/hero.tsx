@@ -19,7 +19,7 @@ export function Hero() {
           See the work ↓
         </MagneticLink>
         <MagneticLink
-          href="mailto:claude@thomasrohan.com"
+          href="mailto:contact@thomasrohan.com"
           className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink"
         >
           Say hi
