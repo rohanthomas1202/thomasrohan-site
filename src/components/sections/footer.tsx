@@ -3,7 +3,7 @@ import { CopyEmail } from "@/components/copy-email";
 
 export function Footer() {
   return (
-    <footer id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 pt-24">
+    <footer id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 pt-8">
       <Reveal>
         <RevealItem>
           <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">Contact</p>
