@@ -48,7 +48,7 @@ const data: CaseStudyData = {
 };
 
 export const metadata: Metadata = {
-  title: "Alcohol Label Verifier — case study",
+  title: "Alcohol Label Verifier case study",
   description: data.dek,
 };
 

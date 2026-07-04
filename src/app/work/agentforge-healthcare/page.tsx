@@ -51,7 +51,7 @@ const data: CaseStudyData = {
 };
 
 export const metadata: Metadata = {
-  title: "AgentForge Healthcare — case study",
+  title: "AgentForge Healthcare case study",
   description: data.dek,
 };
 
