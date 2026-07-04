@@ -12,14 +12,17 @@ export function About() {
     <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-24">
       <Reveal>
         <RevealItem>
-          <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">About</h2>
+          <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+            Track record
+          </h2>
         </RevealItem>
         <RevealItem>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink">
-            I&apos;m Rohan — a full-stack engineer in Austin, TX. Days are portfolio tools at Charles
-            Schwab; nights and weekends are AI products — agents, dev tools, and the interfaces around
-            them. I like small teams, fast feedback, and software that feels considered. If you&apos;re
-            building something, say hi.
+            I&apos;m Rohan — an engineer in Austin, TX building AI products for domains where
+            wrong answers cost money. I spent four years on portfolio tools at Charles Schwab,
+            where a bad deploy touches $3T+ in assets; that&apos;s the reliability bar I bring to
+            AI. I work best embedded with small teams: short loops, working software every week,
+            no decks.
           </p>
         </RevealItem>
         <RevealItem>
@@ -28,18 +31,30 @@ export function About() {
               <li
                 key={r.company}
                 style={{ "--row-accent": ROW_ACCENTS[r.company] ?? "var(--blue)" } as React.CSSProperties}
-                className="exp-row -mx-4 flex flex-col gap-1 border-b border-line px-4 py-5 sm:flex-row sm:items-baseline sm:gap-6"
+                className="exp-row -mx-4 border-b border-line px-4 py-5"
               >
-                <span className="w-44 shrink-0 font-display text-lg font-bold text-ink">{r.company}</span>
-                <span className="text-sm text-ink-soft">
-                  {r.role} · {r.period}
-                </span>
-                <span className="sm:ml-auto sm:text-right">
-                  <span className="exp-metric font-display text-2xl font-bold tracking-tight text-ink">
-                    {r.headline.metric}
-                  </span>{" "}
-                  <span className="text-sm text-ink-soft">{r.headline.label}</span>
-                </span>
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
+                  <span className="w-44 shrink-0 font-display text-lg font-bold text-ink">
+                    {r.company}
+                  </span>
+                  <span className="text-sm text-ink-soft">
+                    {r.label} · {r.period}
+                  </span>
+                  <span className="sm:ml-auto sm:text-right">
+                    <span className="exp-metric font-display text-2xl font-bold tracking-tight text-ink">
+                      {r.headline.metric}
+                    </span>{" "}
+                    <span className="text-sm text-ink-soft">{r.headline.label}</span>
+                  </span>
+                </div>
+                <ul className="mt-3 flex flex-col gap-1.5 sm:pl-[12.5rem]">
+                  {r.highlights.slice(0, 2).map((h) => (
+                    <li key={h.text} className="text-sm leading-relaxed text-ink-soft">
+                      {h.text}
+                      {h.metric ? <span className="font-medium text-ink"> {h.metric}</span> : null}
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

@@ -1,6 +1,7 @@
 export type Role = {
   company: string;
   role: string;
+  label: string;
   location: string;
   period: string;
   current?: boolean;
@@ -12,6 +13,7 @@ export const roles: Role[] = [
   {
     company: "Charles Schwab",
     role: "Full-Stack Java Developer",
+    label: "Portfolio tooling",
     location: "Austin, TX",
     period: "2022 → Present",
     current: true,
@@ -36,6 +38,7 @@ export const roles: Role[] = [
   {
     company: "FedEx",
     role: "Software Engineering Co-Op",
+    label: "Logistics systems",
     location: "Philadelphia, PA",
     period: "2021 → 2022",
     headline: { metric: "+30%", label: "peak-season throughput" },
@@ -57,6 +60,7 @@ export const roles: Role[] = [
   {
     company: "United Healthcare",
     role: "Software Engineering Intern",
+    label: "Claims platform",
     location: "Plano, TX",
     period: "2020",
     headline: { metric: "−80%", label: "claims processing time" },
