@@ -19,6 +19,12 @@ describe("projects content", () => {
       expect(p.caseStudy).toMatch(/^\/work\/[a-z0-9-]+$/);
     }
   });
+
+  it("every project has an accent token", () => {
+    for (const p of projects) {
+      expect(p.accent).toBeTruthy();
+    }
+  });
 });
 describe("experience content", () => {
   it("each role has a period and at least one highlight", () => {

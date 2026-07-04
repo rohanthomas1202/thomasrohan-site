@@ -1,21 +1,20 @@
 "use client";
 import { useState } from "react";
 import { motion, type Variants } from "motion/react";
-import type { Project } from "@/content/projects";
+import type { Accent, Project } from "@/content/projects";
 import { SPRING } from "@/components/motion/springs";
 import { cn } from "@/lib/utils";
 
 const ACCENTS: Record<
-  string,
+  Accent,
   { bg: string; tint: string; deco: string; cssVar: string }
 > = {
-  "AgentForge Healthcare": { bg: "bg-blue", tint: "bg-blue-tint", deco: "decoration-blue", cssVar: "var(--blue)" },
-  "Alcohol Label Verifier": { bg: "bg-tangerine", tint: "bg-tangerine-tint", deco: "decoration-tangerine", cssVar: "var(--tangerine)" },
-  ChatBridge: { bg: "bg-pink", tint: "bg-pink-tint", deco: "decoration-pink", cssVar: "var(--pink)" },
-  Shipyard: { bg: "bg-green", tint: "bg-green-tint", deco: "decoration-green", cssVar: "var(--green)" },
-  "HypeInvest V2": { bg: "bg-violet", tint: "bg-violet-tint", deco: "decoration-violet", cssVar: "var(--violet)" },
+  blue: { bg: "bg-blue", tint: "bg-blue-tint", deco: "decoration-blue", cssVar: "var(--blue)" },
+  tangerine: { bg: "bg-tangerine", tint: "bg-tangerine-tint", deco: "decoration-tangerine", cssVar: "var(--tangerine)" },
+  pink: { bg: "bg-pink", tint: "bg-pink-tint", deco: "decoration-pink", cssVar: "var(--pink)" },
+  green: { bg: "bg-green", tint: "bg-green-tint", deco: "decoration-green", cssVar: "var(--green)" },
+  violet: { bg: "bg-violet", tint: "bg-violet-tint", deco: "decoration-violet", cssVar: "var(--violet)" },
 };
-const FEATURED = new Set(["AgentForge Healthcare", "Alcohol Label Verifier"]);
 
 const cardVariants = (tilt: number): Variants => ({
   hidden: { opacity: 0, y: 24, rotate: 0 },
@@ -49,8 +48,8 @@ function ArrowGlyph() {
 }
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const accent = ACCENTS[project.title] ?? ACCENTS.ChatBridge;
-  const featured = FEATURED.has(project.title);
+  const accent = ACCENTS[project.accent];
+  const featured = Boolean(project.featured);
   const primary = project.caseStudy ?? project.live ?? project.href;
   const external = !project.caseStudy;
   const tilt = index % 2 === 0 ? 1 : -1;

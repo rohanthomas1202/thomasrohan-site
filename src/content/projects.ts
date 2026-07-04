@@ -1,3 +1,5 @@
+export type Accent = "blue" | "tangerine" | "pink" | "green" | "violet";
+
 export type Project = {
   title: string;
   blurb: string;
@@ -7,6 +9,8 @@ export type Project = {
   href: string;
   live?: string;
   caseStudy?: string;
+  accent: Accent;
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
@@ -18,6 +22,8 @@ export const projects: Project[] = [
     tag: "AI Agent",
     href: "https://github.com/rohanthomas1202/agentforge-healthcare",
     caseStudy: "/work/agentforge-healthcare",
+    accent: "blue",
+    featured: true,
   },
   {
     title: "Alcohol Label Verifier",
@@ -29,6 +35,8 @@ export const projects: Project[] = [
     href: "https://github.com/rohanthomas1202/Alcohol-Label-Verifier",
     live: "https://alcohol-label-verifier-two.vercel.app",
     caseStudy: "/work/alcohol-label-verifier",
+    accent: "tangerine",
+    featured: true,
   },
   {
     title: "ChatBridge",
@@ -38,6 +46,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Platform",
     href: "https://github.com/rohanthomas1202/chatbridge",
+    accent: "pink",
   },
   {
     title: "Shipyard",
@@ -47,6 +56,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Dev Tools",
     href: "https://github.com/rohanthomas1202/Shipyard",
+    accent: "green",
   },
   {
     title: "HypeInvest V2",
@@ -56,5 +66,6 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Fintech",
     href: "https://github.com/rohanthomas1202/HypeInvest-V2",
+    accent: "violet",
   },
 ];
