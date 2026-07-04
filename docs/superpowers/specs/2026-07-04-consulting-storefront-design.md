@@ -23,6 +23,8 @@ Convert the site from a job-seeker portfolio into an independent consulting stor
 - Timeline claims must match `experience.ts`: UHC intern 2020, FedEx co-op 2021–2022, Schwab 2022→present. "Six years shipping systems" (2020–2026) and "four years at Schwab" are the ceilings. Never "eight years."
 - Availability copy is the generic "booking new projects" — no slot counts, no quarters.
 - Case-study pages are written from each repo's actual README (fetched at implementation time). No invented metrics or users.
+- AgentForge numbers come from the current README: **14 tools, 6-layer verification pipeline, 92-case eval suite** (the site's old 5/3/57 figures are stale — update them). The eval dataset is open source (MIT) at `rohanthomas1202/healthcare-agent-eval`.
+- Label Verifier was built as a take-home proof of concept. Its case study frames it as a POC build — never as client work, and the fictional stakeholder names from the brief (Marcus, Jenny, Dave, Sarah) never appear on the site.
 
 ## Page structure
 
@@ -68,7 +70,7 @@ Section intro replaces both existing sentences:
 
 Blurb rewrites in `projects.ts` (problem-first):
 
-- **AgentForge Healthcare:** `Clinical staff can't trust an agent that's right "usually." A FHIR-native healthcare agent with a 3-layer verification stack and a 57-case eval suite — every answer checked before a human sees it.`
+- **AgentForge Healthcare:** `Clinical staff can't trust an agent that's right "usually." A FHIR-native healthcare agent — 14 tools, a 6-layer verification pipeline, a 92-case eval suite. Every answer checked before a human sees it.`
 - **Alcohol Label Verifier:** `TTB label review is manual, slow, and fine-heavy. This pipeline turns a label upload into a structured compliance verdict in seconds — with a violation report you can act on.`
 - **ChatBridge:** `A chat platform that treats plugins as untrusted code — sandboxed iframe runtime, with chess (Stockfish WASM), weather, and Spotify OAuth plugins shipped to prove the model.`
 - **Shipyard:** `An autonomous coding agent on LangGraph + Claude — surgical file edits, sub-agent coordination, injectable context. Everything it taught me feeds the agents I ship for clients.`
@@ -126,7 +128,7 @@ Shared component `src/components/case-study.tsx` + two route files under `src/ap
 
 1. **Back link** `← Rohan Thomas` to `/`
 2. **Header:** tag pill, title, one-line dek (accent color matches the project's card accent)
-3. **TL;DR strip:** three short cells — Problem / Built / Proof (e.g. "57-case eval suite" for AgentForge; "upload → verdict in seconds" for Label Verifier)
+3. **TL;DR strip:** three short cells — Problem / Built / Proof (e.g. "92-case open-source eval suite" for AgentForge; "upload → verdict in seconds" for Label Verifier)
 4. **Context** — the business problem, 1–2 short paragraphs
 5. **What I built** — architecture in prose, client-readable
 6. **Decisions** — 3–5 "decision → why" pairs (the consulting sales pitch: judgment, not tasks)
