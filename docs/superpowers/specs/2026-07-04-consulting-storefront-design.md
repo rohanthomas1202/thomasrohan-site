@@ -59,7 +59,7 @@ Links: `Work → #work`, `Offers → #offers`, `Track record → #about`, `Conta
 - Headline (`HEADLINE` const — word-highlight animation unchanged, word count may differ):
   `I build AI products that survive production.`
 - Subhead (amended 2026-07-04 after user confirmed the U.S. Treasury role and chose to weave it in):
-  `Six years shipping systems where mistakes are expensive — $3T+ in assets at Charles Schwab, 50K packages a day at FedEx — and now AI engineering standards across five U.S. Treasury bureaus. That's the bar I bring to every build.`
+  `Six years shipping systems where mistakes are expensive — $3T+ in assets at Charles Schwab, 50K packages a day at FedEx — and now setting AI engineering standards across five U.S. Treasury bureaus. That's the bar I bring to every build.`
 - CTA 1 (filled): `See the work ↓` → `#work` (unchanged)
 - CTA 2 (outlined): `Book an intro call` → `https://cal.com/rohanthomas`, `target="_blank" rel="noreferrer"`
 
