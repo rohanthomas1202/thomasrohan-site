@@ -51,7 +51,8 @@ function ArrowGlyph() {
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const accent = ACCENTS[project.title] ?? ACCENTS.ChatBridge;
   const featured = FEATURED.has(project.title);
-  const primary = project.live ?? project.href;
+  const primary = project.caseStudy ?? project.live ?? project.href;
+  const external = !project.caseStudy;
   const tilt = index % 2 === 0 ? 1 : -1;
   const [focused, setFocused] = useState(false);
   return (
@@ -96,7 +97,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           featured ? "text-3xl sm:text-4xl" : "text-2xl",
         )}
       >
-        <a href={primary} target="_blank" rel="noreferrer" className="after:absolute after:inset-0">
+        <a
+          href={primary}
+          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+          className="after:absolute after:inset-0"
+        >
           {project.title}
         </a>
       </h3>
@@ -110,6 +115,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="ml-auto font-mono text-xs text-ink-soft">{project.year}</span>
       </div>
       <div className="relative z-10 mt-4 flex gap-4 text-sm font-medium">
+        {project.caseStudy && (
+          <a
+            href={project.caseStudy}
+            className={cn("text-ink underline decoration-2 underline-offset-4 hover:opacity-70", accent.deco)}
+          >
+            Case study{" "}
+            <motion.span variants={linkArrow} className="inline-block" aria-hidden>
+              →
+            </motion.span>
+          </a>
+        )}
         <a
           href={project.href}
           target="_blank"

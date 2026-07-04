@@ -24,7 +24,27 @@ describe("Projects", () => {
   it("makes the whole card clickable via a stretched title link", () => {
     render(<Projects />);
     const title = screen.getByRole("link", { name: /AgentForge Healthcare/ });
-    expect(title).toHaveAttribute("href", "https://github.com/rohanthomas1202/agentforge-healthcare");
+    expect(title).toHaveAttribute("href", "/work/agentforge-healthcare");
+    expect(title).not.toHaveAttribute("target");
+  });
+
+  it("adds an internal case-study link on cards that have one, keeping GitHub", () => {
+    render(<Projects />);
+    const caseLinks = screen.getAllByRole("link", { name: /case study/i });
+    expect(caseLinks.map((a) => a.getAttribute("href"))).toEqual([
+      "/work/agentforge-healthcare",
+      "/work/alcohol-label-verifier",
+    ]);
+    for (const p of projects) {
+      if (p.caseStudy) expect(screen.getAllByRole("link").map((a) => a.getAttribute("href"))).toContain(p.href);
+    }
+  });
+
+  it("cards without a case study still open externally", () => {
+    render(<Projects />);
+    const chat = screen.getByRole("link", { name: /^ChatBridge$/ });
+    expect(chat).toHaveAttribute("href", "https://github.com/rohanthomas1202/chatbridge");
+    expect(chat).toHaveAttribute("target", "_blank");
   });
 
   it("renders stack tags as individual chips", () => {

@@ -11,6 +11,14 @@ describe("projects content", () => {
       if (p.live) expect(p.live).toMatch(/^https?:\/\//);
     }
   });
+
+  it("case-study paths are internal /work/ routes", () => {
+    const withCase = projects.filter((p) => p.caseStudy);
+    expect(withCase.length).toBe(2);
+    for (const p of withCase) {
+      expect(p.caseStudy).toMatch(/^\/work\/[a-z0-9-]+$/);
+    }
+  });
 });
 describe("experience content", () => {
   it("each role has a period and at least one highlight", () => {

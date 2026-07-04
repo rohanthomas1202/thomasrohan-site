@@ -6,32 +6,34 @@ export type Project = {
   tag: string;
   href: string;
   live?: string;
+  caseStudy?: string;
 };
 
 export const projects: Project[] = [
   {
     title: "AgentForge Healthcare",
-    blurb:
-      "AI healthcare agent on OpenEMR FHIR R4, orchestrated with LangGraph across 5 tools and a 3-layer verification stack. 57-case eval suite.",
+    blurb: `Clinical staff can’t trust an agent that’s right "usually." A FHIR-native healthcare agent — 14 tools, a 6-layer verification pipeline, a 92-case eval suite. Every answer checked before a human sees it.`,
     stack: "Python · LangGraph · FHIR R4",
     year: "2026",
     tag: "AI Agent",
     href: "https://github.com/rohanthomas1202/agentforge-healthcare",
+    caseStudy: "/work/agentforge-healthcare",
   },
   {
     title: "Alcohol Label Verifier",
     blurb:
-      "Claude-Vision pipeline that audits TTB compliance on alcohol labels — uploads to verdict in seconds, with structured violation reports.",
+      "TTB label review is manual, slow, and fine-heavy. This pipeline turns a label upload into a structured compliance verdict in seconds — with a violation report you can act on.",
     stack: "TypeScript · Next.js · Claude Vision",
     year: "2026",
     tag: "Vision AI",
     href: "https://github.com/rohanthomas1202/Alcohol-Label-Verifier",
     live: "https://alcohol-label-verifier-two.vercel.app",
+    caseStudy: "/work/alcohol-label-verifier",
   },
   {
     title: "ChatBridge",
     blurb:
-      "Plugin-based AI chat platform with sandboxed iframe runtime; ships chess (Stockfish WASM), weather, and Spotify OAuth plugins out of the box.",
+      "A chat platform that treats plugins as untrusted code — sandboxed iframe runtime, with chess (Stockfish WASM), weather, and Spotify OAuth plugins shipped to prove the model.",
     stack: "React · Zustand · Mantine · Hono",
     year: "2026",
     tag: "Platform",
@@ -40,7 +42,7 @@ export const projects: Project[] = [
   {
     title: "Shipyard",
     blurb:
-      "Autonomous coding agent built on LangGraph + Claude — surgical file edits, sub-agent coordination, injectable context.",
+      "An autonomous coding agent on LangGraph + Claude — surgical file edits, sub-agent coordination, injectable context. Everything it taught me feeds the agents I ship for clients.",
     stack: "Python · LangGraph · Claude",
     year: "2026",
     tag: "Dev Tools",
@@ -49,7 +51,7 @@ export const projects: Project[] = [
   {
     title: "HypeInvest V2",
     blurb:
-      "HackUTD-winning sentiment platform: a real-time Hype Index aggregating Reddit, YouTube, Bluesky, and StockTwits into actionable signal.",
+      "Real-time retail-sentiment index aggregating Reddit, YouTube, Bluesky, and StockTwits into one tradeable signal. (Won HackUTD.)",
     stack: "Next.js 15 · React 19 · FastAPI",
     year: "2026",
     tag: "Fintech",
