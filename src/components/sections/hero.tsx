@@ -10,9 +10,9 @@ export function Hero() {
       </p>
       <HeroHeadline />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">
-        Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in
-        assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at United Healthcare.
-        Now I bring that bar to AI.
+        Six years shipping systems where mistakes are expensive — $3T+ in assets at Charles
+        Schwab, 50K packages a day at FedEx — and now AI engineering standards across five U.S.
+        Treasury bureaus. That&apos;s the bar I bring to every build.
       </p>
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <MagneticLink

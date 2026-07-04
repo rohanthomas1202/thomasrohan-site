@@ -58,8 +58,8 @@ Links: `Work → #work`, `Offers → #offers`, `Track record → #about`, `Conta
 - Eyebrow: `Rohan Thomas · Austin, TX · booking new projects`
 - Headline (`HEADLINE` const — word-highlight animation unchanged, word count may differ):
   `I build AI products that survive production.`
-- Subhead:
-  `Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at United Healthcare. Now I bring that bar to AI.`
+- Subhead (amended 2026-07-04 after user confirmed the U.S. Treasury role and chose to weave it in):
+  `Six years shipping systems where mistakes are expensive — $3T+ in assets at Charles Schwab, 50K packages a day at FedEx — and now AI engineering standards across five U.S. Treasury bureaus. That's the bar I bring to every build.`
 - CTA 1 (filled): `See the work ↓` → `#work` (unchanged)
 - CTA 2 (outlined): `Book an intro call` → `https://cal.com/rohanthomas`, `target="_blank" rel="noreferrer"`
 
@@ -102,8 +102,8 @@ Layout: three cards in the existing tint/accent design language (reuse tint back
 ### Track record (`about.tsx`, `experience.ts`)
 
 - Heading: `Track record` (id stays `about`).
-- Bio paragraph replaces current one entirely:
-  `I'm Rohan — an engineer in Austin, TX building AI products for domains where wrong answers cost money. I spent four years on portfolio tools at Charles Schwab, where a bad deploy touches $3T+ in assets; that's the reliability bar I bring to AI. I work best embedded with small teams: short loops, working software every week, no decks.`
+- Bio paragraph (amended 2026-07-04 for the confirmed Treasury role):
+  `I'm Rohan — an engineer in Austin, TX building AI products for domains where wrong answers cost money. Today that's the U.S. Treasury, where I shape AI engineering standards across five bureaus, including the IRS and TTB. Before that: four years of portfolio tools at Charles Schwab, where a bad deploy touches $3T+ in assets. I work best embedded with small teams: short loops, working software every week, no decks.`
 - Role rows: replace job-title labels with outcome labels via a new `label` field on `Role` (keep `role` field for data fidelity or repurpose — implementer's choice, but the rendered text is):
   - Charles Schwab → `Portfolio tooling · 2022 → Present`
   - FedEx → `Logistics systems · 2021 → 2022`
