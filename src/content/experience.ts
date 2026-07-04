@@ -33,8 +33,8 @@ export const roles: Role[] = [
   },
   {
     company: "Charles Schwab",
-    role: "Full-Stack Java Developer",
-    label: "Portfolio tooling",
+    role: "Full-Stack Developer → Senior Developer",
+    label: "Client data & portfolio tooling",
     location: "Austin, TX",
     period: "2022 → 2026",
     headline: { metric: "$3T+", label: "assets under management tooling" },
@@ -46,6 +46,12 @@ export const roles: Role[] = [
       {
         text: "Cut frontend rendering and API response times by",
         metric: "30% via query optimization, lazy loading, and caching.",
+      },
+      {
+        text: "Promoted to Senior Developer on Client Data Technologies — led an onsite/offshore team building Kafka-based segmentation and data integrations.",
+      },
+      {
+        text: "Set the team's AI-assisted engineering practices (Claude Code, GitHub Copilot): spec-driven implementation, test generation, and review support.",
       },
       {
         text: "Engineered Spring Boot REST APIs consumed by web and mobile; defined cross-team contracts. Led design reviews on component structure and shared UI patterns.",

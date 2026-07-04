@@ -35,6 +35,11 @@ next-env.d.ts
 
 # personal artifacts (keep out of public repo)
 Rohan_Thomas_Resume*.pdf
+resume/
+
+# agent working dirs
+.claude/
+.superpowers/
 
 # playwright mcp working data
 .playwright-mcp/
