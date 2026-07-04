@@ -58,11 +58,13 @@ export const metadata: Metadata = {
     url: "/work/agentforge-healthcare",
     title: "AgentForge Healthcare case study",
     description: data.dek,
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "AgentForge Healthcare case study",
     description: data.dek,
+    images: ["/opengraph-image"],
   },
 };
 

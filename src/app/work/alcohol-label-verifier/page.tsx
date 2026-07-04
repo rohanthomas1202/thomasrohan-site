@@ -55,11 +55,13 @@ export const metadata: Metadata = {
     url: "/work/alcohol-label-verifier",
     title: "Alcohol Label Verifier case study",
     description: data.dek,
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Alcohol Label Verifier case study",
     description: data.dek,
+    images: ["/opengraph-image"],
   },
 };
 
