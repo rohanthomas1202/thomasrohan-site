@@ -1,56 +1,32 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#offers", label: "Offers" },
+  { href: "/#about", label: "Track record" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "backdrop-blur-md bg-background/60 border-b border-border"
-          : "bg-transparent",
-      )}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <a href="#top" className="font-mono text-sm tracking-tight">
-          ROHAN<span className="text-accent">.</span>THOMAS
-        </a>
-        <nav className="hidden gap-8 md:flex">
+    <header className="fixed inset-x-0 top-0 z-50 bg-paper/85 backdrop-blur-sm">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="font-display text-lg font-bold tracking-tight text-ink">
+          Rohan Thomas
+        </Link>
+        <ul className="flex items-center gap-6">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </a>
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="text-sm text-ink-soft transition-colors hover:text-ink focus-visible:text-ink"
+              >
+                {l.label}
+              </a>
+            </li>
           ))}
-        </nav>
-        <a
-          href="#contact"
-          className="rounded-full bg-accent px-4 py-2 text-xs font-semibold text-black transition-transform hover:scale-105"
-        >
-          Get in touch
-        </a>
-      </div>
+        </ul>
+      </nav>
     </header>
   );
 }
