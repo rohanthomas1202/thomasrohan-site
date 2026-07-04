@@ -59,7 +59,7 @@ Links: `Work → #work`, `Offers → #offers`, `Track record → #about`, `Conta
 - Headline (`HEADLINE` const — word-highlight animation unchanged, word count may differ):
   `I build AI products that survive production.`
 - Subhead:
-  `Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at UnitedHealth. Now I bring that bar to AI.`
+  `Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at United Healthcare. Now I bring that bar to AI.`
 - CTA 1 (filled): `See the work ↓` → `#work` (unchanged)
 - CTA 2 (outlined): `Book an intro call` → `https://cal.com/rohanthomas`, `target="_blank" rel="noreferrer"`
 

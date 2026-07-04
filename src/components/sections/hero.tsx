@@ -11,7 +11,7 @@ export function Hero() {
       <HeroHeadline />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">
         Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in
-        assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at UnitedHealth.
+        assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at United Healthcare.
         Now I bring that bar to AI.
       </p>
       <div className="mt-10 flex flex-wrap items-center gap-4">
