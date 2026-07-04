@@ -15,28 +15,28 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "sw
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
 const description =
-  "I build AI products — agents, dev tools, and the interfaces around them. Full-stack engineer at Charles Schwab in Austin, TX. Five shipped side projects and counting. Open to collabs.";
+  "I design and ship production AI systems — agents, evals, and the interfaces around them — for domains where wrong answers cost money. Austin, TX. Booking new projects.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasrohan.com"),
   title: {
-    default: "Rohan Thomas — I build AI products",
+    default: "Rohan Thomas — AI products that survive production",
     template: "%s — Rohan Thomas",
   },
   description,
-  keywords: ["Rohan Thomas", "full-stack engineer", "AI agents", "dev tools", "Austin", "Next.js"],
+  keywords: ["Rohan Thomas", "AI consultant", "AI agents", "LLM evals", "AI product engineering", "Austin"],
   authors: [{ name: "Rohan Thomas", url: "https://thomasrohan.com" }],
   creator: "Rohan Thomas",
   openGraph: {
     type: "website",
     url: "https://thomasrohan.com",
-    title: "Rohan Thomas — I build AI products",
+    title: "Rohan Thomas — AI products that survive production",
     description,
     siteName: "Rohan Thomas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rohan Thomas — I build AI products",
+    title: "Rohan Thomas — AI products that survive production",
     description,
   },
   robots: { index: true, follow: true },

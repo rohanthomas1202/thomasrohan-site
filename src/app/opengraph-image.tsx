@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Rohan Thomas — I build AI products";
+export const alt = "Rohan Thomas — AI products that survive production";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -23,10 +23,10 @@ export default function OG() {
         }}
       >
         <div style={{ display: "flex", fontSize: 24, letterSpacing: 3, textTransform: "uppercase", color: "#6B6459" }}>
-          Rohan Thomas · Austin, TX
+          Rohan Thomas · Austin, TX · booking new projects
         </div>
         <div style={{ display: "flex", fontSize: 76, fontWeight: 800, letterSpacing: -2, lineHeight: 1.05, maxWidth: 980 }}>
-          I build AI products — agents, dev tools, and the interfaces around them.
+          I build AI products that survive production.
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", gap: 14 }}>
