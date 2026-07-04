@@ -26,7 +26,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Vision AI",
     href: "https://github.com/rohanthomas1202/Alcohol-Label-Verifier",
-    live: "https://alcohol-label-verifier-nine.vercel.app",
+    live: "https://alcohol-label-verifier-two.vercel.app",
   },
   {
     title: "ChatBridge",
