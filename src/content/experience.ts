@@ -11,12 +11,32 @@ export type Role = {
 
 export const roles: Role[] = [
   {
+    company: "U.S. Department of the Treasury",
+    role: "IT Specialist (Artificial Intelligence)",
+    label: "Federal AI engineering",
+    location: "Washington, DC",
+    period: "2026 → Present",
+    current: true,
+    headline: { metric: "5", label: "Treasury bureaus supported" },
+    highlights: [
+      {
+        text: "Formulating enterprise-wide AI engineering strategy and standards for secure, ethical AI deployment across",
+        metric: "5 bureaus — Treasury, IRS, BEP, U.S. Mint, and TTB.",
+      },
+      {
+        text: "Designing and evaluating production AI-enabled systems with cybersecurity-by-design and DevSecOps practices, aligned to federal AI mandates and Executive Orders.",
+      },
+      {
+        text: "Leading cross-bureau engineering projects spanning cloud-native modernization, data platforms, and secure computing infrastructure.",
+      },
+    ],
+  },
+  {
     company: "Charles Schwab",
     role: "Full-Stack Java Developer",
     label: "Portfolio tooling",
     location: "Austin, TX",
-    period: "2022 → Present",
-    current: true,
+    period: "2022 → 2026",
     headline: { metric: "$3T+", label: "assets under management tooling" },
     highlights: [
       {

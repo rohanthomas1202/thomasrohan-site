@@ -2,6 +2,7 @@ import { roles } from "@/content/experience";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 
 const ROW_ACCENTS: Record<string, string> = {
+  "U.S. Department of the Treasury": "var(--violet)",
   "Charles Schwab": "var(--blue)",
   FedEx: "var(--tangerine)",
   "United Healthcare": "var(--green)",
@@ -19,10 +20,11 @@ export function About() {
         <RevealItem>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink">
             I&apos;m Rohan — an engineer in Austin, TX building AI products for domains where
-            wrong answers cost money. I spent four years on portfolio tools at Charles Schwab,
-            where a bad deploy touches $3T+ in assets; that&apos;s the reliability bar I bring to
-            AI. I work best embedded with small teams: short loops, working software every week,
-            no decks.
+            wrong answers cost money. Today that&apos;s the U.S. Treasury, where I shape AI
+            engineering standards across five bureaus, including the IRS and TTB. Before that:
+            four years of portfolio tools at Charles Schwab, where a bad deploy touches $3T+ in
+            assets. I work best embedded with small teams: short loops, working software every
+            week, no decks.
           </p>
         </RevealItem>
         <RevealItem>
