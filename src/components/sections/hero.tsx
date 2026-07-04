@@ -1,15 +1,18 @@
 import { MagneticLink } from "@/components/magnetic-link";
 import { HeroHeadline } from "@/components/sections/hero-headline";
+import { BOOKING_URL } from "@/lib/site";
 
 export function Hero() {
   return (
     <section className="mx-auto flex min-h-svh max-w-6xl flex-col justify-center px-6 pt-24 pb-16">
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-        Rohan Thomas · Austin, TX · open to collabs
+        Rohan Thomas · Austin, TX · booking new projects
       </p>
       <HeroHeadline />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">
-        Full-stack engineer at Charles Schwab. Five shipped side projects and counting.
+        Six years shipping systems where mistakes are expensive — portfolio tools on $3T+ in
+        assets at Charles Schwab, 50K packages a day at FedEx, healthcare claims at UnitedHealth.
+        Now I bring that bar to AI.
       </p>
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <MagneticLink
@@ -19,10 +22,12 @@ export function Hero() {
           See the work ↓
         </MagneticLink>
         <MagneticLink
-          href="mailto:contact@thomasrohan.com"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noreferrer"
           className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink"
         >
-          Say hi
+          Book an intro call
         </MagneticLink>
       </div>
     </section>

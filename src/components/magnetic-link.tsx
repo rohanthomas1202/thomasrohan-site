@@ -9,10 +9,14 @@ export function MagneticLink({
   href,
   className,
   children,
+  target,
+  rel,
 }: {
   href: string;
   className?: string;
   children: React.ReactNode;
+  target?: string;
+  rel?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const { x, y } = useMagnetic(ref, 0.3);
@@ -22,6 +26,8 @@ export function MagneticLink({
     <motion.a
       ref={ref}
       href={href}
+      target={target}
+      rel={rel}
       style={{ x, y }}
       whileTap={{ scaleX: 1.03, scaleY: 0.95, transition: SPRING.press }}
       className={cn("inline-block", className)}

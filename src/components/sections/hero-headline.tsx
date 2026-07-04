@@ -25,8 +25,7 @@ function useCoarsePointer(): boolean {
   );
 }
 
-export const HEADLINE =
-  "I build AI products — agents, dev tools, and the interfaces around them.";
+export const HEADLINE = "I build AI products that survive production.";
 const WORDS = HEADLINE.split(" ");
 const HIGHLIGHTS = [
   "var(--blue-tint)",

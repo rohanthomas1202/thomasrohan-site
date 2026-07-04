@@ -10,7 +10,7 @@ describe("HeroHeadline", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: "I build AI products — agents, dev tools, and the interfaces around them.",
+        name: "I build AI products that survive production.",
       }),
     ).toBeInTheDocument();
   });
