@@ -9,10 +9,11 @@ describe("Nav", () => {
     expect(name).toHaveAttribute("href", "/");
   });
 
-  it("renders anchor links to work, about, and contact", () => {
+  it("renders root-relative anchor links to all four sections", () => {
     render(<Nav />);
-    expect(screen.getByRole("link", { name: /work/i })).toHaveAttribute("href", "#work");
-    expect(screen.getByRole("link", { name: /about/i })).toHaveAttribute("href", "#about");
-    expect(screen.getByRole("link", { name: /contact/i })).toHaveAttribute("href", "#contact");
+    expect(screen.getByRole("link", { name: /^work$/i })).toHaveAttribute("href", "/#work");
+    expect(screen.getByRole("link", { name: /offers/i })).toHaveAttribute("href", "/#offers");
+    expect(screen.getByRole("link", { name: /track record/i })).toHaveAttribute("href", "/#about");
+    expect(screen.getByRole("link", { name: /contact/i })).toHaveAttribute("href", "/#contact");
   });
 });
