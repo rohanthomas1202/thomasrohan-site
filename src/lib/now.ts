@@ -1,4 +1,4 @@
-export const NOW_PHRASE = "building AI agents and this site";
+export const NOW_PHRASE = "building AI agents · taking on new projects";
 
 export function formatLastCommit(pushedAtIso: string, now: Date): string | null {
   const pushed = new Date(pushedAtIso).getTime();
