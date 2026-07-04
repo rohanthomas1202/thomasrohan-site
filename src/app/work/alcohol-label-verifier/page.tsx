@@ -50,6 +50,17 @@ const data: CaseStudyData = {
 export const metadata: Metadata = {
   title: "Alcohol Label Verifier case study",
   description: data.dek,
+  openGraph: {
+    type: "article",
+    url: "/work/alcohol-label-verifier",
+    title: "Alcohol Label Verifier case study",
+    description: data.dek,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alcohol Label Verifier case study",
+    description: data.dek,
+  },
 };
 
 export default function LabelVerifierCaseStudy() {

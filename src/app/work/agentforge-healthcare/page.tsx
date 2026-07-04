@@ -53,6 +53,17 @@ const data: CaseStudyData = {
 export const metadata: Metadata = {
   title: "AgentForge Healthcare case study",
   description: data.dek,
+  openGraph: {
+    type: "article",
+    url: "/work/agentforge-healthcare",
+    title: "AgentForge Healthcare case study",
+    description: data.dek,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AgentForge Healthcare case study",
+    description: data.dek,
+  },
 };
 
 export default function AgentForgeCaseStudy() {
