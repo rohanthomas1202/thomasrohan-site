@@ -1,6 +1,5 @@
 import { MagneticLink } from "@/components/magnetic-link";
 import { HeroHeadline } from "@/components/sections/hero-headline";
-import { BOOKING_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -10,9 +9,9 @@ export function Hero() {
       </p>
       <HeroHeadline />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">
-        Six years shipping systems where mistakes are expensive — $3T+ in assets at Charles
-        Schwab, 50K packages a day at FedEx — and now setting AI engineering standards across
-        five U.S. Treasury bureaus. That&apos;s the bar I bring to every build.
+        I spent six years shipping systems where mistakes are expensive: portfolio tools on
+        $3T+ in assets at Charles Schwab, 50K packages a day at FedEx. Now I work on AI
+        engineering standards across five U.S. Treasury bureaus. I hold every build to that bar.
       </p>
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <MagneticLink
@@ -22,12 +21,10 @@ export function Hero() {
           See the work ↓
         </MagneticLink>
         <MagneticLink
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noreferrer"
+          href="#contact"
           className="rounded-full border-2 border-ink px-7 py-3.5 font-medium text-ink"
         >
-          Book an intro call
+          Get in touch
         </MagneticLink>
       </div>
     </section>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
-import { BOOKING_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export type CaseStudyData = {
@@ -105,14 +104,6 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
                 {l.label} ↗
               </a>
             ))}
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="ml-auto rounded-full bg-ink px-6 py-3 font-medium text-paper no-underline"
-            >
-              Book an intro call
-            </a>
           </div>
         </RevealItem>
       </Reveal>

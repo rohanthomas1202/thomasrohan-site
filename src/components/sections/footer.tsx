@@ -1,6 +1,5 @@
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { CopyEmail } from "@/components/copy-email";
-import { BOOKING_URL } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -25,17 +24,9 @@ export function Footer() {
         </RevealItem>
         <RevealItem>
           <p className="mt-6 max-w-xl text-ink-soft">
-            Tell me what you&apos;re building and where it&apos;s stuck — I reply within 24 hours,
+            Tell me what you&apos;re building and where it&apos;s stuck. I reply within 24 hours,
             usually with questions.
           </p>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block text-sm font-medium text-ink underline decoration-2 underline-offset-4 hover:opacity-70"
-          >
-            Or skip the email — book a 30-minute intro call ↗
-          </a>
         </RevealItem>
         <RevealItem>
           <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-line pt-6 text-sm">

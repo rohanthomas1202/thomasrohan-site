@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Footer } from "./footer";
-import { BOOKING_URL } from "@/lib/site";
 
 describe("Footer", () => {
   it("renders the oversized mailto", () => {
@@ -35,10 +34,8 @@ describe("Footer", () => {
     ).toBeInTheDocument();
   });
 
-  it("offers a booking link as the email alternative", () => {
+  it("has no booking link", () => {
     render(<Footer />);
-    const book = screen.getByRole("link", { name: /book a 30-minute intro call/i });
-    expect(book).toHaveAttribute("href", BOOKING_URL);
-    expect(book).toHaveAttribute("target", "_blank");
+    expect(screen.queryByRole("link", { name: /book/i })).toBeNull();
   });
 });

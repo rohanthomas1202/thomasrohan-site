@@ -19,12 +19,11 @@ export function About() {
         </RevealItem>
         <RevealItem>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink">
-            I&apos;m Rohan — an engineer in Austin, TX building AI products for domains where
-            wrong answers cost money. Today that&apos;s the U.S. Treasury, where I shape AI
-            engineering standards across five bureaus, including the IRS and TTB. Before that:
-            four years of portfolio tools at Charles Schwab, where a bad deploy touches $3T+ in
-            assets. I work best embedded with small teams: short loops, working software every
-            week, no decks.
+            I&apos;m Rohan, an engineer in Austin. I build AI products for domains where wrong
+            answers cost money. Right now that&apos;s the U.S. Treasury, where I work on AI
+            engineering standards across five bureaus, including the IRS and TTB. Before that I
+            spent four years on portfolio tools at Charles Schwab, where a bad deploy touches
+            $3T+ in assets. I like small teams, short loops, and working software every week.
           </p>
         </RevealItem>
         <RevealItem>

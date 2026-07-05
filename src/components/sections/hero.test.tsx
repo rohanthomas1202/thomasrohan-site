@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Hero } from "./hero";
-import { BOOKING_URL } from "@/lib/site";
 
 describe("Hero", () => {
   it("renders the headline verbatim", () => {
@@ -19,14 +18,19 @@ describe("Hero", () => {
     expect(
       screen.getByText(/Rohan Thomas · Austin, TX · booking new projects/),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Six years shipping systems where mistakes are expensive/)).toBeInTheDocument();
+    expect(screen.getByText(/six years shipping systems where mistakes are expensive/i)).toBeInTheDocument();
   });
 
-  it("renders both magnetic CTAs with correct targets", () => {
+  it("renders both magnetic CTAs as internal anchors", () => {
     render(<Hero />);
     expect(screen.getByRole("link", { name: /see the work/i })).toHaveAttribute("href", "#work");
-    const book = screen.getByRole("link", { name: /book an intro call/i });
-    expect(book).toHaveAttribute("href", BOOKING_URL);
-    expect(book).toHaveAttribute("target", "_blank");
+    const touch = screen.getByRole("link", { name: /get in touch/i });
+    expect(touch).toHaveAttribute("href", "#contact");
+    expect(touch).not.toHaveAttribute("target");
+  });
+
+  it("has no booking link", () => {
+    render(<Hero />);
+    expect(screen.queryByRole("link", { name: /book/i })).toBeNull();
   });
 });

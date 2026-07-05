@@ -21,7 +21,7 @@ export const roles: Role[] = [
     highlights: [
       {
         text: "Formulating enterprise-wide AI engineering strategy and standards for secure, ethical AI deployment across",
-        metric: "5 bureaus — Treasury, IRS, BEP, U.S. Mint, and TTB.",
+        metric: "5 bureaus: Treasury, IRS, BEP, U.S. Mint, and TTB.",
       },
       {
         text: "Designing and evaluating production AI-enabled systems with cybersecurity-by-design and DevSecOps practices, aligned to federal AI mandates and Executive Orders.",
@@ -48,7 +48,7 @@ export const roles: Role[] = [
         metric: "30% via query optimization, lazy loading, and caching.",
       },
       {
-        text: "Promoted to Senior Developer on Client Data Technologies — led an onsite/offshore team building Kafka-based segmentation and data integrations.",
+        text: "Promoted to Senior Developer on Client Data Technologies, where I led an onsite and offshore team building Kafka-based segmentation and data integrations.",
       },
       {
         text: "Set the team's AI-assisted engineering practices (Claude Code, GitHub Copilot): spec-driven implementation, test generation, and review support.",
@@ -74,8 +74,8 @@ export const roles: Role[] = [
         metric: "+30% during peak seasons.",
       },
       {
-        text: "Refactored core algorithms in Java, Kotlin, and Spring Boot —",
-        metric: "+20% speed, −15% downtime.",
+        text: "Refactored core algorithms in Java, Kotlin, and Spring Boot for",
+        metric: "+20% speed and −15% downtime.",
       },
       {
         text: "Shipped an Android app processing",
@@ -92,8 +92,8 @@ export const roles: Role[] = [
     headline: { metric: "−80%", label: "claims processing time" },
     highlights: [
       {
-        text: "Shipped a batch upload platform replacing manual entry for 1,000+ providers —",
-        metric: "−80% processing time.",
+        text: "Shipped a batch upload platform replacing manual entry for 1,000+ providers, cutting",
+        metric: "processing time by 80%.",
       },
       {
         text: "Integrated MySQL backend handling 10K+ patient records weekly with validation and audit logging.",

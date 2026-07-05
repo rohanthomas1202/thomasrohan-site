@@ -59,7 +59,6 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       initial="hidden"
       whileInView={focused ? "hover" : "visible"}
       whileHover="hover"
-      whileTap={{ scale: 0.985, transition: SPRING.press }}
       onFocus={() => setFocused(true)}
       onBlur={(e) => setFocused(e.currentTarget.contains(e.relatedTarget as Node))}
       viewport={{ once: true, margin: "-15% 0px" }}
@@ -75,8 +74,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
           {project.tag}
         </span>
-        <span
-          aria-hidden
+        <a
+          href={primary}
+          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+          aria-label={`Open ${project.title}`}
           className={cn(
             "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
             accent.bg,
@@ -88,7 +89,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <motion.span variants={arrowIn} className="absolute inset-0 flex items-center justify-center">
             <ArrowGlyph />
           </motion.span>
-        </span>
+        </a>
       </div>
       <h3
         className={cn(
@@ -96,13 +97,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           featured ? "text-3xl sm:text-4xl" : "text-2xl",
         )}
       >
-        <a
-          href={primary}
-          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-          className="after:absolute after:inset-0"
-        >
-          {project.title}
-        </a>
+        {project.title}
       </h3>
       <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/75">{project.blurb}</p>
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">

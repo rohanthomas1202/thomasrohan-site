@@ -11,7 +11,7 @@ describe("About (Track record)", () => {
       screen.getByRole("heading", { level: 2, name: "Track record" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/building AI products for domains where wrong answers cost money/),
+      screen.getByText(/AI products for domains where wrong answers cost money/),
     ).toBeInTheDocument();
   });
 

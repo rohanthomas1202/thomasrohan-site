@@ -1,6 +1,5 @@
 import { offers } from "@/content/offers";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
-import { BOOKING_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const TINTS = ["bg-blue-tint", "bg-green-tint", "bg-violet-tint"];
@@ -16,8 +15,8 @@ export function Offers() {
         </RevealItem>
         <RevealItem>
           <p className="mt-3 max-w-md text-ink-soft">
-            Three ways to work with me. Every engagement ends with something running in production
-            — not a deck.
+            Three ways to work with me. Every engagement ends with something running in
+            production.
           </p>
         </RevealItem>
         <RevealItem>
@@ -34,14 +33,6 @@ export function Offers() {
                   {o.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75">{o.blurb}</p>
-                <a
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-auto self-start pt-6 text-sm font-medium text-ink underline decoration-2 underline-offset-4 hover:opacity-70"
-                >
-                  Book an intro call ↗
-                </a>
               </article>
             ))}
           </div>

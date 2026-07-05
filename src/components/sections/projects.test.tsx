@@ -21,11 +21,12 @@ describe("Projects", () => {
     }
   });
 
-  it("makes the whole card clickable via a stretched title link", () => {
+  it("card titles are plain text, only the arrow button opens the project", () => {
     render(<Projects />);
-    const title = screen.getByRole("link", { name: /AgentForge Healthcare/ });
-    expect(title).toHaveAttribute("href", "/work/agentforge-healthcare");
-    expect(title).not.toHaveAttribute("target");
+    expect(screen.queryByRole("link", { name: "AgentForge Healthcare" })).toBeNull();
+    const arrow = screen.getByRole("link", { name: "Open AgentForge Healthcare" });
+    expect(arrow).toHaveAttribute("href", "/work/agentforge-healthcare");
+    expect(arrow).not.toHaveAttribute("target");
   });
 
   it("adds an internal case-study link on cards that have one, keeping GitHub", () => {
@@ -40,9 +41,9 @@ describe("Projects", () => {
     }
   });
 
-  it("cards without a case study still open externally", () => {
+  it("arrow buttons on cards without a case study open externally in a new tab", () => {
     render(<Projects />);
-    const chat = screen.getByRole("link", { name: /^ChatBridge$/ });
+    const chat = screen.getByRole("link", { name: "Open ChatBridge" });
     expect(chat).toHaveAttribute("href", "https://github.com/rohanthomas1202/chatbridge");
     expect(chat).toHaveAttribute("target", "_blank");
   });

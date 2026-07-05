@@ -15,7 +15,7 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "sw
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
 const description =
-  "I design and ship production AI systems — agents, evals, and the interfaces around them — for domains where wrong answers cost money. Austin, TX. Booking new projects.";
+  "I build and ship production AI systems: agents, evals, and the interfaces around them. Based in Austin, TX. Booking new projects.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasrohan.com"),
