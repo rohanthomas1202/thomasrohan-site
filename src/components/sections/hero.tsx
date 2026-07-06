@@ -1,11 +1,12 @@
 import { MagneticLink } from "@/components/magnetic-link";
 import { HeroHeadline } from "@/components/sections/hero-headline";
+import { EYEBROW } from "@/lib/now";
 
 export function Hero() {
   return (
     <section className="mx-auto flex min-h-svh max-w-6xl flex-col justify-center px-6 pt-24 pb-16">
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-        Rohan Thomas · Austin, TX · booking new projects
+        {EYEBROW}
       </p>
       <HeroHeadline />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">

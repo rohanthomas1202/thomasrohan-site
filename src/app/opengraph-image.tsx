@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { EYEBROW } from "@/lib/now";
 
 export const alt = "Rohan Thomas — AI products that survive production";
 export const size = { width: 1200, height: 630 };
@@ -23,7 +24,7 @@ export default function OG() {
         }}
       >
         <div style={{ display: "flex", fontSize: 24, letterSpacing: 3, textTransform: "uppercase", color: "#6B6459" }}>
-          Rohan Thomas · Austin, TX · booking new projects
+          {EYEBROW}
         </div>
         <div style={{ display: "flex", fontSize: 76, fontWeight: 800, letterSpacing: -2, lineHeight: 1.05, maxWidth: 980 }}>
           I build AI products that survive production.

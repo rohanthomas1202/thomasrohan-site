@@ -16,7 +16,7 @@ describe("Hero", () => {
   it("renders the eyebrow and sub-line", () => {
     render(<Hero />);
     expect(
-      screen.getByText(/Rohan Thomas · Austin, TX · booking new projects/),
+      screen.getByText(/Rohan Thomas · Austin, TX · taking new projects/),
     ).toBeInTheDocument();
     expect(screen.getByText(/six years shipping systems where mistakes are expensive/i)).toBeInTheDocument();
   });

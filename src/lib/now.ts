@@ -1,4 +1,6 @@
-export const NOW_PHRASE = "building AI agents · taking on new projects";
+export const AVAILABILITY = "taking new projects";
+export const EYEBROW = `Rohan Thomas · Austin, TX · ${AVAILABILITY}`;
+export const NOW_PHRASE = `building AI agents · ${AVAILABILITY}`;
 
 export function formatLastCommit(pushedAtIso: string, now: Date): string | null {
   const pushed = new Date(pushedAtIso).getTime();
