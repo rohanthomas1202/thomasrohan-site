@@ -40,9 +40,29 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "TruthLayer",
+    blurb:
+      "Polymarket and Kalshi often price the same event, worded two different ways. TruthLayer matches contracts with embeddings plus Claude verification, streams fee-adjusted spreads, and grades every call against real settlement outcomes — the scoreboard is proof, not theory.",
+    stack: "Python · FAISS · Claude",
+    year: "2026",
+    tag: "Arb Scanner",
+    href: "https://github.com/rohanthomas1202/truthlayer",
+    accent: "violet",
+  },
+  {
+    title: "Shipyard",
+    blurb:
+      "An autonomous coding agent built on LangGraph. It plans typed edit steps, makes anchor-based file edits with fuzzy fallback, fans work out to parallel sub-agents, and routes each task to the right model tier. Most of what I know about agents came from building it.",
+    stack: "Python · LangGraph · FastAPI",
+    year: "2026",
+    tag: "Dev Tools",
+    href: "https://github.com/rohanthomas1202/Shipyard",
+    accent: "green",
+  },
+  {
     title: "ChatBridge",
     blurb:
-      "A chat platform that treats plugins as untrusted code and runs them in sandboxed iframes. Ships with chess (Stockfish WASM), weather, and Spotify plugins to prove the model works.",
+      "A plugin runtime built into the open-source Chatbox client. Plugins live in iframes behind a postMessage lifecycle protocol and register as tools the AI can call mid-chat — chess (Stockfish WASM), weather, and Spotify prove the model works.",
     stack: "React · Zustand · Mantine · Hono",
     year: "2026",
     tag: "Platform",
@@ -50,23 +70,23 @@ export const projects: Project[] = [
     accent: "pink",
   },
   {
-    title: "Shipyard",
+    title: "PokerStats",
     blurb:
-      "An autonomous coding agent built on LangGraph and Claude. It makes precise file edits, coordinates sub-agents, and takes injected context. Most of what I know about agents came from building it.",
-    stack: "Python · LangGraph · Claude",
+      "Online players get HUD stats; live players get a notebook. PokerStats logs a hand in under three seconds and turns your history into VPIP, c-bet%, and a leak report — every stat formula verified against worked examples in a 121-test suite.",
+    stack: "Swift 6 · SwiftUI · SwiftData",
     year: "2026",
-    tag: "Dev Tools",
-    href: "https://github.com/rohanthomas1202/Shipyard",
-    accent: "green",
+    tag: "iOS App",
+    href: "https://github.com/rohanthomas1202/PokerStats",
+    accent: "blue",
   },
   {
     title: "HypeInvest V2",
     blurb:
-      "A real-time sentiment index that pulls Reddit, YouTube, Bluesky, and StockTwits into one tradeable signal. Won HackUTD.",
-    stack: "Next.js 15 · React 19 · FastAPI",
+      "Scores Reddit, YouTube, and news sentiment with Claude and blends it into one hype signal from −100 to +100. Sources fail independently, so one API outage degrades the index instead of breaking it. Rebuilt from a HackUTD project that won Goldman Sachs' investment-strategy challenge.",
+    stack: "Next.js 16 · React 19 · FastAPI",
     year: "2026",
     tag: "Fintech",
     href: "https://github.com/rohanthomas1202/HypeInvest-V2",
-    accent: "violet",
+    accent: "tangerine",
   },
 ];
