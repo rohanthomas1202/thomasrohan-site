@@ -29,23 +29,24 @@ describe("Projects", () => {
     expect(arrow).not.toHaveAttribute("target");
   });
 
-  it("adds an internal case-study link on cards that have one, keeping GitHub", () => {
+  it("adds an internal case-study link on every card, keeping GitHub", () => {
     render(<Projects />);
     const caseLinks = screen.getAllByRole("link", { name: /case study/i });
-    expect(caseLinks.map((a) => a.getAttribute("href"))).toEqual([
-      "/work/agentforge-healthcare",
-      "/work/alcohol-label-verifier",
-    ]);
+    expect(caseLinks.map((a) => a.getAttribute("href"))).toEqual(
+      projects.map((p) => p.caseStudy),
+    );
+    const hrefs = screen.getAllByRole("link").map((a) => a.getAttribute("href"));
     for (const p of projects) {
-      if (p.caseStudy) expect(screen.getAllByRole("link").map((a) => a.getAttribute("href"))).toContain(p.href);
+      expect(p.caseStudy).toMatch(/^\/work\//);
+      expect(hrefs).toContain(p.href);
     }
   });
 
-  it("arrow buttons on cards without a case study open externally in a new tab", () => {
+  it("arrow buttons open case studies internally, not in a new tab", () => {
     render(<Projects />);
     const chat = screen.getByRole("link", { name: "Open ChatBridge" });
-    expect(chat).toHaveAttribute("href", "https://github.com/rohanthomas1202/chatbridge");
-    expect(chat).toHaveAttribute("target", "_blank");
+    expect(chat).toHaveAttribute("href", "/work/chatbridge");
+    expect(chat).not.toHaveAttribute("target");
   });
 
   it("renders stack tags as individual chips", () => {

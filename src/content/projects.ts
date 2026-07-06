@@ -50,6 +50,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Arb Scanner",
     href: "https://github.com/rohanthomas1202/truthlayer",
+    caseStudy: "/work/truthlayer",
     accent: "violet",
   },
   {
@@ -60,6 +61,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Dev Tools",
     href: "https://github.com/rohanthomas1202/Shipyard",
+    caseStudy: "/work/shipyard",
     accent: "green",
   },
   {
@@ -70,6 +72,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Platform",
     href: "https://github.com/rohanthomas1202/chatbridge",
+    caseStudy: "/work/chatbridge",
     accent: "pink",
   },
   {
@@ -80,6 +83,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "iOS App",
     href: "https://github.com/rohanthomas1202/PokerStats",
+    caseStudy: "/work/pokerstats",
     accent: "tangerine",
     wide: true,
   },
@@ -91,6 +95,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Fintech",
     href: "https://github.com/rohanthomas1202/HypeInvest-V2",
+    caseStudy: "/work/hypeinvest",
     accent: "blue",
     wide: true,
   },

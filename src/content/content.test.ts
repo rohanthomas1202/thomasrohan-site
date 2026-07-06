@@ -12,10 +12,8 @@ describe("projects content", () => {
     }
   });
 
-  it("case-study paths are internal /work/ routes", () => {
-    const withCase = projects.filter((p) => p.caseStudy);
-    expect(withCase.length).toBe(2);
-    for (const p of withCase) {
+  it("every project has an internal /work/ case-study route", () => {
+    for (const p of projects) {
       expect(p.caseStudy).toMatch(/^\/work\/[a-z0-9-]+$/);
     }
   });
