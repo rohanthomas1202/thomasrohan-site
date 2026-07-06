@@ -1,5 +1,16 @@
 import { describe, it, expect } from "vitest";
-import { formatLastCommit } from "./now";
+import { AVAILABILITY, AVAILABILITY_SENTENCE, EYEBROW, NOW_PHRASE, formatLastCommit } from "./now";
+
+describe("availability copy", () => {
+  it("keeps each surface's copy verbatim", () => {
+    expect(EYEBROW).toBe("Rohan Thomas · Austin, TX · taking new projects");
+    expect(AVAILABILITY_SENTENCE).toBe("Taking new projects");
+    expect(NOW_PHRASE).toBe("building AI agents · taking on new projects");
+  });
+  it("sentence-cases whatever AVAILABILITY becomes", () => {
+    expect(AVAILABILITY_SENTENCE).toBe(AVAILABILITY.charAt(0).toUpperCase() + AVAILABILITY.slice(1));
+  });
+});
 
 const NOW = new Date("2026-07-03T12:00:00Z");
 

@@ -11,6 +11,9 @@ export type Project = {
   caseStudy?: string;
   accent: Accent;
   featured?: boolean;
+  /* Widens the card to half a row (col-span-3) without featured styling,
+     so a trailing pair of cards fills the 6-column grid instead of leaving a hole. */
+  wide?: boolean;
 };
 
 export const projects: Project[] = [
@@ -77,7 +80,8 @@ export const projects: Project[] = [
     year: "2026",
     tag: "iOS App",
     href: "https://github.com/rohanthomas1202/PokerStats",
-    accent: "blue",
+    accent: "tangerine",
+    wide: true,
   },
   {
     title: "HypeInvest V2",
@@ -87,6 +91,7 @@ export const projects: Project[] = [
     year: "2026",
     tag: "Fintech",
     href: "https://github.com/rohanthomas1202/HypeInvest-V2",
-    accent: "tangerine",
+    accent: "blue",
+    wide: true,
   },
 ];

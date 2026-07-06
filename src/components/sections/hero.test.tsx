@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Hero } from "./hero";
+import { EYEBROW } from "@/lib/now";
 
 describe("Hero", () => {
   it("renders the headline verbatim", () => {
@@ -16,7 +17,7 @@ describe("Hero", () => {
   it("renders the eyebrow and sub-line", () => {
     render(<Hero />);
     expect(
-      screen.getByText(/Rohan Thomas · Austin, TX · taking new projects/),
+      screen.getByText(EYEBROW),
     ).toBeInTheDocument();
     expect(screen.getByText(/six years shipping systems where mistakes are expensive/i)).toBeInTheDocument();
   });

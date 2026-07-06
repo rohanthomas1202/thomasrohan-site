@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { MotionProvider } from "@/components/motion/motion-provider";
-import { AVAILABILITY } from "@/lib/now";
+import { AVAILABILITY_SENTENCE } from "@/lib/now";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -15,8 +15,7 @@ const bricolage = Bricolage_Grotesque({
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
-const availabilitySentence = AVAILABILITY.charAt(0).toUpperCase() + AVAILABILITY.slice(1);
-const description = `I build and ship production AI systems: agents, evals, and the interfaces around them. Based in Austin, TX. ${availabilitySentence}.`;
+const description = `I build and ship production AI systems: agents, evals, and the interfaces around them. Based in Austin, TX. ${AVAILABILITY_SENTENCE}.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasrohan.com"),

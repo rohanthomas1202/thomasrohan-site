@@ -54,6 +54,36 @@ describe("Projects", () => {
     expect(screen.getByText("FHIR R4")).toBeInTheDocument();
   });
 
+  it("packs the md 6-column grid into complete rows with no holes", () => {
+    let fill = 0;
+    for (const p of projects) {
+      const span = p.featured || p.wide ? 3 : 2;
+      // a card that would straddle the row edge wraps and leaves a hole
+      expect(fill + span).toBeLessThanOrEqual(6);
+      fill = (fill + span) % 6;
+    }
+    expect(fill).toBe(0);
+  });
+
+  it("never repeats an accent within a row or between horizontal neighbors", () => {
+    let fill = 0;
+    let row: string[] = [];
+    for (const p of projects) {
+      const span = p.featured || p.wide ? 3 : 2;
+      if (fill + span > 6) {
+        fill = 0;
+        row = [];
+      }
+      expect(row).not.toContain(p.accent);
+      row.push(p.accent);
+      fill += span;
+      if (fill === 6) {
+        fill = 0;
+        row = [];
+      }
+    }
+  });
+
   it("gives every card its own selection accent via CSS var", () => {
     render(<Projects />);
     const cards = document.querySelectorAll(".project-card");

@@ -67,7 +67,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       className={cn(
         "project-card group relative flex flex-col rounded-3xl p-7 sm:p-8",
         accent.tint,
-        featured ? "md:col-span-3 md:min-h-80" : "md:col-span-2 md:min-h-72",
+        featured ? "md:col-span-3 md:min-h-80" : project.wide ? "md:col-span-3 md:min-h-72" : "md:col-span-2 md:min-h-72",
       )}
     >
       <div className="flex items-start justify-between gap-4">
