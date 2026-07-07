@@ -69,6 +69,9 @@ export async function getRecentCommits(): Promise<RecentCommit[]> {
     const res = await fetch("https://api.github.com/users/rohanthomas1202/events/public", {
       next: { revalidate: 3600 },
       headers,
+      /* A stalled connection aborts into the catch below — the failure mode
+         is silence, never a hung render. */
+      signal: AbortSignal.timeout(3000),
     });
     if (!res.ok) return [];
     const events: unknown[] = await res.json();

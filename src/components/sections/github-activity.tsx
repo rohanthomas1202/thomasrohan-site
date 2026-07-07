@@ -24,7 +24,7 @@ export function CommitList({ commits, now }: { commits: RecentCommit[]; now: Dat
               rel="noreferrer"
               className="hover:text-ink"
             >
-              @rohanthomas1202 ↗
+              @rohanthomas1202 <span aria-hidden>↗</span>
             </a>
           </div>
         </RevealItem>

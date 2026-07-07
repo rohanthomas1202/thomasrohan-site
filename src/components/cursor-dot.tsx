@@ -24,20 +24,35 @@ export function CursorDot() {
     setActive(on);
     if (!on) return;
     const root = document.documentElement;
-    root.classList.add("cursor-none");
+    /* Hybrid devices match `pointer: fine` on the primary pointer alone, so
+       touch/pen input still reaches these window listeners — mouse only. */
+    const isMouse = (e: PointerEvent) => e.pointerType === "mouse";
+    /* `cursor-none` is only added once a pointermove proves a live pointer;
+       hiding the native cursor while the dot is still invisible would leave
+       a stationary mouse user with no cursor at all. */
     const move = (e: PointerEvent) => {
+      if (!isMouse(e)) return;
       rawX.set(e.clientX);
       rawY.set(e.clientY);
       opacity.set(1);
       root.classList.add("cursor-none");
     };
     const over = (e: PointerEvent) => {
+      if (!isMouse(e)) return;
       const target = (e.target as Element).closest?.("a, button");
-      if (!target) return;
+      /* Reset on non-interactive content too: client-side navigation unmounts
+         a hovered link without a qualifying pointerout, which would otherwise
+         strand the dot enlarged with a stale accent. */
+      if (!target) {
+        scale.set(1);
+        setAccent("var(--ink)");
+        return;
+      }
       scale.set(2.2);
       setAccent(cursorAccent(target));
     };
     const out = (e: PointerEvent) => {
+      if (!isMouse(e)) return;
       const target = (e.target as Element).closest?.("a, button");
       if (!target || target.contains(e.relatedTarget as Node)) return;
       scale.set(1);

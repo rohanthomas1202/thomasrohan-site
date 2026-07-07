@@ -118,6 +118,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   // Cards cascade left-to-right within their grid row on scroll-in.
   const delay = columnPosition(index, projects) * 0.08;
   const [focused, setFocused] = useState(false);
+  /* The stagger delay applies to the scroll-in entrance only; once it has run,
+     hover-out/blur settle back through `visible` with no delay. */
+  const [entered, setEntered] = useState(false);
   return (
     <motion.article
       initial="hidden"
@@ -125,8 +128,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       whileHover="hover"
       onFocus={() => setFocused(true)}
       onBlur={(e) => setFocused(e.currentTarget.contains(e.relatedTarget as Node))}
+      onAnimationComplete={(definition) => {
+        if (definition === "visible") setEntered(true);
+      }}
       viewport={{ once: true, margin: "-15% 0px" }}
-      variants={cardVariants(tilt, delay)}
+      variants={cardVariants(tilt, entered ? 0 : delay)}
       style={{ "--card-accent": accent.cssVar, "--focus-ring": accent.cssVar, transformOrigin: "center bottom" } as React.CSSProperties}
       className={cn(
         "project-card group relative flex flex-col rounded-3xl p-7 sm:p-8",
