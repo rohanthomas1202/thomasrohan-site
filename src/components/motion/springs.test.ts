@@ -10,5 +10,6 @@ describe("shared spring vocabulary", () => {
     expect(SPRING.magnetic).toMatchObject({ stiffness: 150, damping: 15 });
     expect(SPRING.highlight).toMatchObject({ type: "spring", stiffness: 300, damping: 24 });
     expect(SPRING.settle).toMatchObject({ type: "spring", stiffness: 380, damping: 10, mass: 0.6 });
+    expect(SPRING.cursor).toMatchObject({ stiffness: 600, damping: 40 });
   });
 });

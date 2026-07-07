@@ -6,4 +6,5 @@ export const SPRING = {
   magnetic: { stiffness: 150, damping: 15 },
   highlight: { type: "spring", stiffness: 300, damping: 24 },
   settle: { type: "spring", stiffness: 380, damping: 10, mass: 0.6 },
+  cursor: { stiffness: 600, damping: 40 },
 } as const;

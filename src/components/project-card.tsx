@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, type Variants } from "motion/react";
 import { Link } from "next-view-transitions";
 import { projects, type Accent, type Project } from "@/content/projects";
 import { SPRING } from "@/components/motion/springs";
+import { useMagnetic } from "@/components/motion/use-magnetic";
 import { columnPosition } from "@/lib/grid";
 import { cn } from "@/lib/utils";
 
@@ -64,6 +65,49 @@ function ArrowSwap() {
   );
 }
 
+function CardArrow({
+  href,
+  label,
+  external,
+  className,
+}: {
+  href: string;
+  label: string;
+  external: boolean;
+  className: string;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const { x, y } = useMagnetic(ref, 0.25);
+  if (external) {
+    return (
+      <motion.a
+        ref={ref}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={label}
+        style={{ x, y }}
+        whileTap={{ scale: 0.9, transition: SPRING.press }}
+        className={className}
+      >
+        <ArrowSwap />
+      </motion.a>
+    );
+  }
+  return (
+    <MotionLink
+      ref={ref}
+      href={href}
+      aria-label={label}
+      style={{ x, y }}
+      whileTap={{ scale: 0.9, transition: SPRING.press }}
+      className={className}
+    >
+      <ArrowSwap />
+    </MotionLink>
+  );
+}
+
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const accent = ACCENTS[project.accent];
   const featured = Boolean(project.featured);
@@ -94,33 +138,15 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
           {project.tag}
         </span>
-        {external ? (
-          <motion.a
-            href={primary}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Open ${project.title}`}
-            whileTap={{ scale: 0.9, transition: SPRING.press }}
-            className={cn(
-              "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
-              accent.bg,
-            )}
-          >
-            <ArrowSwap />
-          </motion.a>
-        ) : (
-          <MotionLink
-            href={primary}
-            aria-label={`Open ${project.title}`}
-            whileTap={{ scale: 0.9, transition: SPRING.press }}
-            className={cn(
-              "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
-              accent.bg,
-            )}
-          >
-            <ArrowSwap />
-          </MotionLink>
-        )}
+        <CardArrow
+          href={primary}
+          label={`Open ${project.title}`}
+          external={external}
+          className={cn(
+            "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
+            accent.bg,
+          )}
+        />
       </div>
       <h3
         style={slug ? { viewTransitionName: `cs-${slug}` } : undefined}

@@ -4,6 +4,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { CursorDot } from "@/components/cursor-dot";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { AVAILABILITY_SENTENCE } from "@/lib/now";
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <MotionProvider>
             <Nav />
             {children}
+            <CursorDot />
           </MotionProvider>
           <Analytics />
         </body>

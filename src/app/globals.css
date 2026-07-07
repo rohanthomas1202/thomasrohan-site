@@ -151,6 +151,14 @@ button:focus-visible {
   color: var(--paper);
 }
 
+/* Custom cursor dot active: hide the native cursor everywhere. The dot
+   component owns this class — added only on fine-pointer, hover-capable,
+   motion-ok devices and removed on unmount or when the pointer leaves. */
+html.cursor-none,
+html.cursor-none * {
+  cursor: none;
+}
+
 /* Card depth: accent shadow pre-rendered on ::after, revealed by opacity only
    (compositor-safe — never animate box-shadow). The card's transform creates a
    stacking context, so z-index: -1 tucks the layer behind the tint background
