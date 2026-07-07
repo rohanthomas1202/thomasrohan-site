@@ -1,13 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { cursorAccent } from "@/lib/cursor";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import { SPRING } from "@/components/motion/springs";
 
+/* Hybrid devices match `pointer: fine` on the primary pointer alone, so this
+   gate admits touchscreen laptops — the mouse-only check lives per-event. */
+const QUERIES = ["(pointer: fine)", "(hover: hover)"];
+function subscribeFinePointer(onChange: () => void) {
+  const lists = QUERIES.map((q) => window.matchMedia(q));
+  lists.forEach((l) => l.addEventListener("change", onChange));
+  return () => lists.forEach((l) => l.removeEventListener("change", onChange));
+}
+const finePointerSnapshot = () => QUERIES.every((q) => window.matchMedia(q).matches);
+
 export function CursorDot() {
   const reduced = usePrefersReducedMotion();
-  const [active, setActive] = useState(false);
+  const finePointer = useSyncExternalStore(subscribeFinePointer, finePointerSnapshot, () => false);
+  const active = finePointer && !reduced;
   const [accent, setAccent] = useState("var(--ink)");
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
@@ -17,15 +28,8 @@ export function CursorDot() {
   const opacity = useMotionValue(0);
 
   useEffect(() => {
-    const fine =
-      window.matchMedia("(pointer: fine)").matches &&
-      window.matchMedia("(hover: hover)").matches;
-    const on = fine && !reduced;
-    setActive(on);
-    if (!on) return;
+    if (!active) return;
     const root = document.documentElement;
-    /* Hybrid devices match `pointer: fine` on the primary pointer alone, so
-       touch/pen input still reaches these window listeners — mouse only. */
     const isMouse = (e: PointerEvent) => e.pointerType === "mouse";
     /* `cursor-none` is only added once a pointermove proves a live pointer;
        hiding the native cursor while the dot is still invisible would leave
@@ -73,7 +77,7 @@ export function CursorDot() {
       window.removeEventListener("pointerout", out);
       root.removeEventListener("pointerleave", leave);
     };
-  }, [reduced, rawX, rawY, scale, opacity]);
+  }, [active, rawX, rawY, scale, opacity]);
 
   if (!active) return null;
   return (
