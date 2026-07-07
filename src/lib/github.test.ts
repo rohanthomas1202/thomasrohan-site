@@ -1,77 +1,76 @@
 import { describe, it, expect } from "vitest";
-import { shapeCommits, relativeTime } from "./github";
+import { shapePushes, commitMessage, relativeTime } from "./github";
 
-function pushEvent(
-  repo: string,
-  createdAt: string,
-  commits: { message: string; sha: string }[],
-): unknown {
-  return { type: "PushEvent", repo: { name: repo }, payload: { commits }, created_at: createdAt };
+/* Mirrors the live events API shape: pushes carry only the head SHA. */
+function pushEvent(repo: string, createdAt: string, head: string): unknown {
+  return { type: "PushEvent", repo: { name: repo }, payload: { head }, created_at: createdAt };
 }
 
 const EVENTS = [
-  pushEvent("rohanthomas1202/website", "2026-07-05T12:00:00Z", [
-    { message: "fix: earlier commit", sha: "aaa111" },
-    { message: "feat: hero polish\n\nlong body that should be dropped", sha: "bbb222" },
-  ]),
+  pushEvent("rohanthomas1202/website", "2026-07-05T12:00:00Z", "bbb222"),
   { type: "WatchEvent", repo: { name: "rohanthomas1202/website" }, created_at: "2026-07-05T13:00:00Z" },
-  pushEvent("rohanthomas1202/website", "2026-07-04T09:00:00Z", [
-    { message: "chore: older push to same repo", sha: "ccc333" },
-  ]),
-  pushEvent("rohanthomas1202/truthlayer", "2026-07-05T15:00:00Z", [
-    { message: "feat: verify claims", sha: "ddd444" },
-  ]),
-  pushEvent("rohanthomas1202/shipyard", "2026-07-03T08:00:00Z", [
-    { message: "docs: readme", sha: "eee555" },
-  ]),
-  pushEvent("rohanthomas1202/pokerstats", "2026-07-02T08:00:00Z", [
-    { message: "fix: equity calc", sha: "fff666" },
-  ]),
+  pushEvent("rohanthomas1202/website", "2026-07-04T09:00:00Z", "ccc333"),
+  pushEvent("rohanthomas1202/truthlayer", "2026-07-05T15:00:00Z", "ddd444"),
+  pushEvent("rohanthomas1202/shipyard", "2026-07-03T08:00:00Z", "eee555"),
+  pushEvent("rohanthomas1202/pokerstats", "2026-07-02T08:00:00Z", "fff666"),
 ];
 
-describe("shapeCommits", () => {
-  it("keeps only push events and takes each push's last commit", () => {
-    const commits = shapeCommits(EVENTS, 10);
-    const website = commits.find((c) => c.repo === "website");
-    expect(website?.message).toBe("feat: hero polish");
-    expect(website?.url).toBe("https://github.com/rohanthomas1202/website/commit/bbb222");
+describe("shapePushes", () => {
+  it("keeps only push events with their head SHA", () => {
+    const pushes = shapePushes(EVENTS, 10);
+    const website = pushes.find((p) => p.repo === "rohanthomas1202/website");
+    expect(website?.sha).toBe("bbb222");
   });
 
   it("dedupes by repo keeping the newest push and sorts newest-first", () => {
-    const commits = shapeCommits(EVENTS, 10);
-    expect(commits.map((c) => c.repo)).toEqual(["truthlayer", "website", "shipyard", "pokerstats"]);
-    expect(commits.filter((c) => c.repo === "website")).toHaveLength(1);
+    const pushes = shapePushes(EVENTS, 10);
+    expect(pushes.map((p) => p.repo.split("/").pop())).toEqual([
+      "truthlayer",
+      "website",
+      "shipyard",
+      "pokerstats",
+    ]);
   });
 
   it("caps at the limit (default 3)", () => {
-    expect(shapeCommits(EVENTS)).toHaveLength(3);
-    expect(shapeCommits(EVENTS, 2).map((c) => c.repo)).toEqual(["truthlayer", "website"]);
+    expect(shapePushes(EVENTS)).toHaveLength(3);
+    expect(shapePushes(EVENTS, 2).map((p) => p.sha)).toEqual(["ddd444", "bbb222"]);
   });
 
-  it("strips the owner from repo names and keeps the iso timestamp", () => {
-    const [first] = shapeCommits(EVENTS);
-    expect(first.repo).toBe("truthlayer");
+  it("keeps the iso timestamp of the push", () => {
+    const [first] = shapePushes(EVENTS);
     expect(first.iso).toBe("2026-07-05T15:00:00Z");
   });
 
-  it("truncates long first lines to 80 chars", () => {
-    const long = "a".repeat(120);
-    const [commit] = shapeCommits([
-      pushEvent("me/repo", "2026-07-05T12:00:00Z", [{ message: long, sha: "abc" }]),
-    ]);
-    expect(commit.message).toHaveLength(80);
-    expect(commit.message.endsWith("…")).toBe(true);
-  });
-
-  it("ignores malformed events and empty pushes", () => {
+  it("ignores malformed events, including old-shape pushes without a head", () => {
     expect(
-      shapeCommits([
+      shapePushes([
         null,
         42,
         { type: "PushEvent" },
-        pushEvent("me/empty", "2026-07-05T12:00:00Z", []),
+        { type: "PushEvent", repo: { name: "me/old" }, payload: { commits: [] }, created_at: "2026-07-05T12:00:00Z" },
       ]),
     ).toEqual([]);
+  });
+});
+
+describe("commitMessage", () => {
+  it("takes the first line of the commit message", () => {
+    expect(
+      commitMessage({ commit: { message: "feat: hero polish\n\nlong body that should be dropped" } }),
+    ).toBe("feat: hero polish");
+  });
+
+  it("truncates long first lines to 80 chars", () => {
+    const message = commitMessage({ commit: { message: "a".repeat(120) } });
+    expect(message).toHaveLength(80);
+    expect(message?.endsWith("…")).toBe(true);
+  });
+
+  it("returns null for malformed or empty responses", () => {
+    expect(commitMessage(null)).toBeNull();
+    expect(commitMessage({})).toBeNull();
+    expect(commitMessage({ commit: { message: "" } })).toBeNull();
   });
 });
 
