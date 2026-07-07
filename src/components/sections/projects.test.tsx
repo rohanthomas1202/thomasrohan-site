@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Projects } from "./projects";
+import { cardVariants } from "@/components/project-card";
 import { projects } from "@/content/projects";
 
 describe("Projects", () => {
@@ -83,6 +84,12 @@ describe("Projects", () => {
         row = [];
       }
     }
+  });
+
+  it("lifts and scales cards on hover, restating resting scale on entrance", () => {
+    const v = cardVariants(1);
+    expect(v.hover).toMatchObject({ opacity: 1, y: -6, scale: 1.02, rotate: 0 });
+    expect(v.visible).toMatchObject({ opacity: 1, y: 0, scale: 1, rotate: 1 });
   });
 
   it("gives every card its own selection accent via CSS var", () => {

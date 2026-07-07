@@ -16,12 +16,12 @@ const ACCENTS: Record<
   violet: { bg: "bg-violet", tint: "bg-violet-tint", deco: "decoration-violet", cssVar: "var(--violet)" },
 };
 
-const cardVariants = (tilt: number): Variants => ({
+export const cardVariants = (tilt: number): Variants => ({
   hidden: { opacity: 0, y: 24, rotate: 0 },
-  visible: { opacity: 1, y: 0, rotate: tilt, transition: SPRING.reveal },
+  visible: { opacity: 1, y: 0, scale: 1, rotate: tilt, transition: SPRING.reveal },
   /* Must re-state opacity/y: when focus routes this variant through the
      whileInView slot, missing props fall back to `hidden` and the card vanishes. */
-  hover: { opacity: 1, y: 0, rotate: 0, transition: SPRING.hover },
+  hover: { opacity: 1, y: -6, scale: 1.02, rotate: 0, transition: SPRING.hover },
 });
 const arrowOut: Variants = {
   hidden: { x: "0%", y: "0%" },
@@ -74,10 +74,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
           {project.tag}
         </span>
-        <a
+        <motion.a
           href={primary}
           {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
           aria-label={`Open ${project.title}`}
+          whileTap={{ scale: 0.9, transition: SPRING.press }}
           className={cn(
             "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
             accent.bg,
@@ -89,7 +90,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <motion.span variants={arrowIn} className="absolute inset-0 flex items-center justify-center">
             <ArrowGlyph />
           </motion.span>
-        </a>
+        </motion.a>
       </div>
       <h3
         className={cn(

@@ -134,3 +134,27 @@ button:focus-visible {
   background: var(--card-accent);
   color: var(--paper);
 }
+
+/* Card depth: accent shadow pre-rendered on ::after, revealed by opacity only
+   (compositor-safe — never animate box-shadow). The card's transform creates a
+   stacking context, so z-index: -1 tucks the layer behind the tint background
+   while the negative-spread shadow still paints outside the card edges. */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 40px -16px color-mix(in srgb, var(--card-accent) 45%, transparent);
+  opacity: 0;
+  transition: opacity 250ms var(--ease-expo);
+  pointer-events: none;
+}
+.project-card:focus-within::after {
+  opacity: 1;
+}
+@media (hover: hover) {
+  .project-card:hover::after {
+    opacity: 1;
+  }
+}
