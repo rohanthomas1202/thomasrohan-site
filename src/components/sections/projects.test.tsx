@@ -92,6 +92,11 @@ describe("Projects", () => {
     expect(v.visible).toMatchObject({ opacity: 1, y: 0, scale: 1, rotate: 1 });
   });
 
+  it("staggers entrance by column position, defaulting to no delay", () => {
+    expect(cardVariants(1).visible).toMatchObject({ transition: { delay: 0 } });
+    expect(cardVariants(1, 0.16).visible).toMatchObject({ transition: { delay: 0.16 } });
+  });
+
   it("gives every card its own selection accent via CSS var", () => {
     render(<Projects />);
     const cards = document.querySelectorAll(".project-card");

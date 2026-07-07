@@ -20,6 +20,14 @@ describe("AgentForge case study", () => {
     expect(screen.getAllByRole("heading", { level: 3 }).length).toBeGreaterThanOrEqual(3);
   });
 
+  it("renders a reading-progress bar tinted with the page accent", () => {
+    render(<AgentForgePage />);
+    const bar = document.querySelector(".reading-progress") as HTMLElement;
+    expect(bar).toBeInTheDocument();
+    expect(bar.getAttribute("style")).toContain("var(--blue)");
+    expect(bar).toHaveAttribute("aria-hidden");
+  });
+
   it("keeps GitHub as a verify link and the back-home link, with no booking CTA", () => {
     render(<AgentForgePage />);
     expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute(

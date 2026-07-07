@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
-import { cn } from "@/lib/utils";
+import { ReadingProgress } from "@/components/reading-progress";
+import { accentFromTint, cn } from "@/lib/utils";
 
 export type CaseStudyData = {
   tag: string;
@@ -31,6 +32,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export function CaseStudy({ data }: { data: CaseStudyData }) {
   return (
     <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
+      <ReadingProgress color={accentFromTint(data.tintClass)} />
       <Reveal>
         <RevealItem>
           <Link href="/" className="font-mono text-xs uppercase tracking-widest text-ink-soft hover:text-ink">

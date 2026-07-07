@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { motion, type Variants } from "motion/react";
-import type { Accent, Project } from "@/content/projects";
+import { projects, type Accent, type Project } from "@/content/projects";
 import { SPRING } from "@/components/motion/springs";
+import { columnPosition } from "@/lib/grid";
 import { cn } from "@/lib/utils";
 
 const ACCENTS: Record<
@@ -16,9 +17,9 @@ const ACCENTS: Record<
   violet: { bg: "bg-violet", tint: "bg-violet-tint", deco: "decoration-violet", cssVar: "var(--violet)" },
 };
 
-export const cardVariants = (tilt: number): Variants => ({
+export const cardVariants = (tilt: number, delay = 0): Variants => ({
   hidden: { opacity: 0, y: 24, rotate: 0 },
-  visible: { opacity: 1, y: 0, scale: 1, rotate: tilt, transition: SPRING.reveal },
+  visible: { opacity: 1, y: 0, scale: 1, rotate: tilt, transition: { ...SPRING.reveal, delay } },
   /* Must re-state opacity/y: when focus routes this variant through the
      whileInView slot, missing props fall back to `hidden` and the card vanishes. */
   hover: { opacity: 1, y: -6, scale: 1.02, rotate: 0, transition: SPRING.hover },
@@ -53,6 +54,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const primary = project.caseStudy ?? project.live ?? project.href;
   const external = !project.caseStudy;
   const tilt = index % 2 === 0 ? 1 : -1;
+  // Cards cascade left-to-right within their grid row on scroll-in.
+  const delay = columnPosition(index, projects) * 0.08;
   const [focused, setFocused] = useState(false);
   return (
     <motion.article
@@ -62,7 +65,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       onFocus={() => setFocused(true)}
       onBlur={(e) => setFocused(e.currentTarget.contains(e.relatedTarget as Node))}
       viewport={{ once: true, margin: "-15% 0px" }}
-      variants={cardVariants(tilt)}
+      variants={cardVariants(tilt, delay)}
       style={{ "--card-accent": accent.cssVar, "--focus-ring": accent.cssVar, transformOrigin: "center bottom" } as React.CSSProperties}
       className={cn(
         "project-card group relative flex flex-col rounded-3xl p-7 sm:p-8",
