@@ -64,7 +64,12 @@ export function relativeTime(iso: string, now: Date): string {
 
 export async function getRecentCommits(): Promise<RecentCommit[]> {
   try {
-    const headers: Record<string, string> = { accept: "application/vnd.github+json" };
+    /* GitHub's API 403s requests without a User-Agent, and Node's fetch
+       sends none by default. */
+    const headers: Record<string, string> = {
+      accept: "application/vnd.github+json",
+      "user-agent": "thomasrohan.com",
+    };
     if (process.env.GITHUB_TOKEN) headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
     const res = await fetch("https://api.github.com/users/rohanthomas1202/events/public", {
       next: { revalidate: 3600 },
