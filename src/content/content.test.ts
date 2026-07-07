@@ -18,6 +18,12 @@ describe("projects content", () => {
     }
   });
 
+  it("every case-study route ends in a nonempty kebab slug (view-transition names)", () => {
+    for (const p of projects) {
+      expect(p.caseStudy?.split("/").pop()).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+    }
+  });
+
   it("every project has an accent token", () => {
     for (const p of projects) {
       expect(p.accent).toBeTruthy();

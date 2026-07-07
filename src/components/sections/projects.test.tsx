@@ -1,5 +1,11 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+
+// The real Link needs the ViewTransitions provider + app router; jsdom gets a plain anchor.
+vi.mock("next-view-transitions", () => ({
+  Link: ({ children, ...props }: React.ComponentProps<"a">) => <a {...props}>{children}</a>,
+}));
+
 import { Projects } from "./projects";
 import { cardVariants } from "@/components/project-card";
 import { projects } from "@/content/projects";
@@ -95,6 +101,15 @@ describe("Projects", () => {
   it("staggers entrance by column position, defaulting to no delay", () => {
     expect(cardVariants(1).visible).toMatchObject({ transition: { delay: 0 } });
     expect(cardVariants(1, 0.16).visible).toMatchObject({ transition: { delay: 0.16 } });
+  });
+
+  it("names every card title for the view-transition morph into its case study", () => {
+    render(<Projects />);
+    for (const p of projects) {
+      const slug = p.caseStudy?.split("/").pop();
+      const title = screen.getByText(p.title) as HTMLElement;
+      expect(title.style.viewTransitionName).toBe(`cs-${slug}`);
+    }
   });
 
   it("gives every card its own selection accent via CSS var", () => {

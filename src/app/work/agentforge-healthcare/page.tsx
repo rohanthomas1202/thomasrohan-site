@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "agentforge-healthcare",
   tag: "AI Agent",
   title: "AgentForge Healthcare",
   dek: "A healthcare agent with 14 tools over live EHR data, six verification layers on every response, and a 92-case eval suite published as open source.",

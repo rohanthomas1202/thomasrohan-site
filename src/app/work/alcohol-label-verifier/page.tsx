@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "alcohol-label-verifier",
   tag: "Vision AI",
   title: "Alcohol Label Verifier",
   dek: "TTB compliance checks that used to be done by eye. Upload a label and get a field-by-field verdict in seconds.",

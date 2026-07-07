@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "chatbridge",
   tag: "Platform",
   title: "ChatBridge",
   dek: "A plugin runtime built into the open-source Chatbox client: iframe-isolated plugins with a strict lifecycle protocol, registered as tools the AI can call mid-conversation.",

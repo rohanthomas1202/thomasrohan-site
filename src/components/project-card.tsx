@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, type Variants } from "motion/react";
+import { Link } from "next-view-transitions";
 import { projects, type Accent, type Project } from "@/content/projects";
 import { SPRING } from "@/components/motion/springs";
 import { columnPosition } from "@/lib/grid";
@@ -48,11 +49,27 @@ function ArrowGlyph() {
   );
 }
 
+const MotionLink = motion.create(Link);
+
+function ArrowSwap() {
+  return (
+    <>
+      <motion.span variants={arrowOut} className="absolute inset-0 flex items-center justify-center">
+        <ArrowGlyph />
+      </motion.span>
+      <motion.span variants={arrowIn} className="absolute inset-0 flex items-center justify-center">
+        <ArrowGlyph />
+      </motion.span>
+    </>
+  );
+}
+
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const accent = ACCENTS[project.accent];
   const featured = Boolean(project.featured);
   const primary = project.caseStudy ?? project.live ?? project.href;
   const external = !project.caseStudy;
+  const slug = project.caseStudy?.split("/").pop();
   const tilt = index % 2 === 0 ? 1 : -1;
   // Cards cascade left-to-right within their grid row on scroll-in.
   const delay = columnPosition(index, projects) * 0.08;
@@ -77,25 +94,36 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
           {project.tag}
         </span>
-        <motion.a
-          href={primary}
-          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-          aria-label={`Open ${project.title}`}
-          whileTap={{ scale: 0.9, transition: SPRING.press }}
-          className={cn(
-            "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
-            accent.bg,
-          )}
-        >
-          <motion.span variants={arrowOut} className="absolute inset-0 flex items-center justify-center">
-            <ArrowGlyph />
-          </motion.span>
-          <motion.span variants={arrowIn} className="absolute inset-0 flex items-center justify-center">
-            <ArrowGlyph />
-          </motion.span>
-        </motion.a>
+        {external ? (
+          <motion.a
+            href={primary}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${project.title}`}
+            whileTap={{ scale: 0.9, transition: SPRING.press }}
+            className={cn(
+              "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
+              accent.bg,
+            )}
+          >
+            <ArrowSwap />
+          </motion.a>
+        ) : (
+          <MotionLink
+            href={primary}
+            aria-label={`Open ${project.title}`}
+            whileTap={{ scale: 0.9, transition: SPRING.press }}
+            className={cn(
+              "relative flex size-10 items-center justify-center overflow-hidden rounded-full text-paper",
+              accent.bg,
+            )}
+          >
+            <ArrowSwap />
+          </MotionLink>
+        )}
       </div>
       <h3
+        style={slug ? { viewTransitionName: `cs-${slug}` } : undefined}
         className={cn(
           "mt-6 font-display font-bold tracking-tight text-ink",
           featured ? "text-3xl sm:text-4xl" : "text-2xl",
@@ -114,7 +142,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       </div>
       <div className="relative z-10 mt-4 flex gap-4 text-sm font-medium">
         {project.caseStudy && (
-          <a
+          <Link
             href={project.caseStudy}
             className={cn("text-ink underline decoration-2 underline-offset-4 hover:opacity-70", accent.deco)}
           >
@@ -122,7 +150,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             <motion.span variants={linkArrow} className="inline-block" aria-hidden>
               →
             </motion.span>
-          </a>
+          </Link>
         )}
         <a
           href={project.href}

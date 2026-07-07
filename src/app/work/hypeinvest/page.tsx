@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "hypeinvest",
   tag: "Fintech",
   title: "HypeInvest V2",
   dek: "A stock hype index that scores Reddit, YouTube, and news sentiment with Claude and blends them into one signal — built so any source failing degrades the index instead of breaking it.",

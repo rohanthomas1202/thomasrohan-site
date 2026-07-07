@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "truthlayer",
   tag: "Arb Scanner",
   title: "TruthLayer",
   dek: "A real-time arbitrage scanner that matches equivalent contracts across Polymarket and Kalshi with a four-tier pipeline, then grades every detected edge against real settlement outcomes.",

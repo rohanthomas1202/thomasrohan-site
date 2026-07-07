@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Inter, Geist_Mono } from "next/font/google";
+import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -44,17 +45,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${bricolage.variable} ${inter.variable} ${geistMono.variable} antialiased`}
-    >
-      <body className="bg-paper text-ink">
-        <MotionProvider>
-          <Nav />
-          {children}
-        </MotionProvider>
-        <Analytics />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html
+        lang="en"
+        className={`${bricolage.variable} ${inter.variable} ${geistMono.variable} antialiased`}
+      >
+        <body className="bg-paper text-ink">
+          <MotionProvider>
+            <Nav />
+            {children}
+          </MotionProvider>
+          <Analytics />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

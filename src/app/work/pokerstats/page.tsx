@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "pokerstats",
   tag: "iOS App",
   title: "PokerStats",
   dek: "A native iOS app for live poker players: three-second hand logging at the table, HUD-style stats computed from your own history, and a leak finder — every formula verified against worked examples.",

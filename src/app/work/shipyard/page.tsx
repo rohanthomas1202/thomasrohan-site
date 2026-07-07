@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/case-study";
 
 const data: CaseStudyData = {
+  slug: "shipyard",
   tag: "Dev Tools",
   title: "Shipyard",
   dek: "An autonomous coding agent built on LangGraph: typed plan steps, anchor-based surgical edits, parallel sub-agents, and per-task model routing — backed by 606 tests.",

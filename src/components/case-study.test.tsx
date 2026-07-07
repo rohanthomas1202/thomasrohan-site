@@ -1,5 +1,11 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+
+// The real Link needs the ViewTransitions provider + app router; jsdom gets a plain anchor.
+vi.mock("next-view-transitions", () => ({
+  Link: ({ children, ...props }: React.ComponentProps<"a">) => <a {...props}>{children}</a>,
+}));
+
 import AgentForgePage from "@/app/work/agentforge-healthcare/page";
 import LabelVerifierPage from "@/app/work/alcohol-label-verifier/page";
 
@@ -26,6 +32,12 @@ describe("AgentForge case study", () => {
     expect(bar).toBeInTheDocument();
     expect(bar.getAttribute("style")).toContain("var(--blue)");
     expect(bar).toHaveAttribute("aria-hidden");
+  });
+
+  it("names the h1 for the view-transition morph from the home card", () => {
+    render(<AgentForgePage />);
+    const h1 = screen.getByRole("heading", { level: 1, name: "AgentForge Healthcare" });
+    expect(h1.style.viewTransitionName).toBe("cs-agentforge-healthcare");
   });
 
   it("keeps GitHub as a verify link and the back-home link, with no booking CTA", () => {

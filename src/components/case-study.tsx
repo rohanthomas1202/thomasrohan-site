@@ -1,9 +1,11 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { ReadingProgress } from "@/components/reading-progress";
 import { accentFromTint, cn } from "@/lib/utils";
 
 export type CaseStudyData = {
+  /* Route directory name; pairs the hero <h1> with the card title's view-transition morph. */
+  slug: string;
   tag: string;
   title: string;
   dek: string;
@@ -43,7 +45,10 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
           <span className="mt-8 inline-block rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
             {data.tag}
           </span>
-          <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+          <h1
+            style={{ viewTransitionName: `cs-${data.slug}` }}
+            className="mt-4 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl"
+          >
             {data.title}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">{data.dek}</p>

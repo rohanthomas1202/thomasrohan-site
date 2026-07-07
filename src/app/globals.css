@@ -79,6 +79,22 @@ body {
   }
 }
 
+/* View transitions can't be interrupted mid-flight, so cap them short. The
+   pseudo-elements live outside the DOM — the `*` kill-switch above never
+   reaches them, hence the explicit reduced-motion rule. */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 250ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
+}
+
 /* Footer email: ink fill rises on hover. Layered spans; reduced-motion kill-switch zeroes the transition. */
 .email-fill {
   position: relative;
