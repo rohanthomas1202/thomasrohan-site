@@ -146,7 +146,8 @@ button:focus-visible {
 }
 
 /* Selecting text inside a card highlights in that card's accent. */
-.project-card ::selection {
+.project-card ::selection,
+.offer-card ::selection {
   background: var(--card-accent);
   color: var(--paper);
 }
@@ -163,7 +164,8 @@ html.cursor-none * {
    (compositor-safe — never animate box-shadow). The card's transform creates a
    stacking context, so z-index: -1 tucks the layer behind the tint background
    while the negative-spread shadow still paints outside the card edges. */
-.project-card::after {
+.project-card::after,
+.offer-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -174,11 +176,13 @@ html.cursor-none * {
   transition: opacity 250ms var(--ease-expo);
   pointer-events: none;
 }
-.project-card:focus-within::after {
+.project-card:focus-within::after,
+.offer-card:focus-within::after {
   opacity: 1;
 }
 @media (hover: hover) {
-  .project-card:hover::after {
+  .project-card:hover::after,
+  .offer-card:hover::after {
     opacity: 1;
   }
 }

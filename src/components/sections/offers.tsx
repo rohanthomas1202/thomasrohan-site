@@ -1,6 +1,9 @@
+"use client";
+import { motion } from "motion/react";
 import { offers } from "@/content/offers";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
-import { cn } from "@/lib/utils";
+import { SPRING } from "@/components/motion/springs";
+import { cn, accentFromTint } from "@/lib/utils";
 
 const TINTS = ["bg-blue-tint", "bg-green-tint", "bg-violet-tint"];
 
@@ -22,9 +25,14 @@ export function Offers() {
         <RevealItem>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {offers.map((o, i) => (
-              <article
+              <motion.article
                 key={o.title}
-                className={cn("flex flex-col rounded-3xl p-7 sm:p-8", TINTS[i % TINTS.length])}
+                whileHover={{ y: -6, scale: 1.02, transition: SPRING.hover }}
+                style={{ "--card-accent": accentFromTint(TINTS[i % TINTS.length]) } as React.CSSProperties}
+                className={cn(
+                  "offer-card relative flex flex-col rounded-3xl p-7 sm:p-8",
+                  TINTS[i % TINTS.length],
+                )}
               >
                 <span className="self-start rounded-full border-2 border-ink/15 bg-paper px-3 py-1 font-mono text-xs text-ink">
                   {o.timeline}
@@ -33,7 +41,7 @@ export function Offers() {
                   {o.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75">{o.blurb}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </RevealItem>
